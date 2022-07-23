@@ -4,7 +4,6 @@ function customForEach(callback) {
     for (let index = 0; index < this.length; index++) {
         resultForEach = callback(this[index], index, this)
     }
-    return resultForEach;
 }
 Array.prototype.customForEach = customForEach;
 
@@ -18,18 +17,15 @@ function customMap(callback) {
 Array.prototype.customMap = customMap;
 
 function customFind(callback) {
-    const resultFind = [];
     for(let index = 0; index < this.length; index++) {
         const resultCb = callback(this[index], index, this)
+        const resultFind = this[index]
         if(resultCb) {
-            resultFind.push(this[index])
-            resultFind.length = 1;
+            return resultFind;
         }
     }
-    return resultFind
 }
 Array.prototype.customFind = customFind;
-
 
 function customFilter(callback) {
     const resultFilter = [];
@@ -46,17 +42,19 @@ Array.prototype.customFilter = customFilter;
 function customReduce(callback, initialValue) {
     let accum;
     let current;
+    let index = 0;
     if(initialValue) {
         accum = initialValue
     } else {
-        accum = this[0]
+        accum = this[index];
+        index++;
     }
-    for (let i = 1; i < this.length; i++) {
-      current = this[i];
-      accum = callback(accum, current, i, this);
+    for (; index < this.length; index++) {
+      current = this[index];
+      accum = callback(accum, current, index, this);
     }
     return accum;
-  }
+}
 Array.prototype.customReduce = customReduce;
 
 //task2
