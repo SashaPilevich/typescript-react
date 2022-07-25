@@ -1,6 +1,5 @@
 //task1
 function customForEach(callback) {
-    let resultForEach;
     for (let index = 0; index < this.length; index++) {
         resultForEach = callback(this[index], index, this)
     }
