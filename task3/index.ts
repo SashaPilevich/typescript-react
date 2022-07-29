@@ -35,16 +35,16 @@ const users: Users[] = [
 ]
 
 //1
-const strNameUsers = users.map(({name}) => name).join(',');
+const strNameUsers: string = users.map(({name}) => name).join(',');
 console.log(strNameUsers)
 
 //2
-const numOfCar = users.map(({cars}) => cars).length;
+const numOfCar: number = users.map((cars) => cars).length;
 console.log(numOfCar)
 
 //3
 let usersWithEduc:Users[]
-function isHasEducation(users: Users[]) {
+function isHasEducation(users: Users[]): Users[] {
     usersWithEduc = users.filter(({hasEducation}) => {
         if (hasEducation) {
             return users
@@ -56,7 +56,7 @@ console.log(isHasEducation(users))
 
 //4
 let usersWithAnimal:Users[]
-function isHasAnimal(users:Users[]) {
+function isHasAnimal(users:Users[]): Users[] {
     usersWithAnimal = users.filter(({animals}) => {
         if(animals) {
             return users;
@@ -67,8 +67,8 @@ function isHasAnimal(users:Users[]) {
 console.log(isHasAnimal(users))
 
 //5
-function getCar(users:Users[]) {
-    const stringCar = users.map(({cars}) => cars).join(',')
+function getCar(users:Users[]): string {
+    const stringCar:string = users.map(({cars}) => cars).join(',')
     return stringCar;
 }
 console.log(getCar(users))
