@@ -39,7 +39,12 @@ const strNameUsers: string = users.map(({name}) => name).join(',');
 console.log(strNameUsers)
 
 //2
-const numOfCar: number = users.map((cars) => cars).length;
+const numOfCar: number = users.reduce((accum: number, user) => {
+    if (user.cars !== undefined) {
+        accum += user.cars.length
+    }
+    return accum
+},0)
 console.log(numOfCar)
 
 //3
