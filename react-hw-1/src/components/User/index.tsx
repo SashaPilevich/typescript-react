@@ -6,11 +6,8 @@ interface IUser {
 
 const getUser = (userName:string) => {
     let str = userName.split(' ');
-    let result = []
-    for(let item of str) {
-        result.push(item[0])
-    }
-    return result.join('')
+    let result = str.map((item) => item[0])
+    return result;
 }
 export const User = (props:IUser) => {
     return (

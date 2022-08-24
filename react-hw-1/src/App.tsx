@@ -21,8 +21,8 @@ function App() {
       <Input type='text' placeholder='Введите логин'/>
       <Input type='text' placeholder='Введите пароль'/>
       <Input type='checkbox' text='Согласен на обработку данных'/>
-      <Button active={false} onClick={submit} label='Отправить'/>
-      <Button active={false} onClick={createForm} label='Регистрация'/>
+      <Button disabled={false} onClick={submit} label='Отправить'/>
+      <Button disabled={true} onClick={createForm} label='Регистрация'/>
       <User userName='Alexandra Pilevich'/>
     </div>
   );
