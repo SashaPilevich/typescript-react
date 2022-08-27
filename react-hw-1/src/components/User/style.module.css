@@ -1,24 +1,29 @@
 .userContainer {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 70px;
-    background-color: cadetblue;
-    border-radius: 20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 70px;
+  background-color: cadetblue;
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 .userShort {
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-color: darkcyan;
-    border-radius: 5px;
-    margin-right: 5px;
-    color:white;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: darkcyan;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: white;
 }
-.userFull {
-    color: white;
+.userDarkFull {
+  background-color: black;
+}
+.userDarkShort {
+  background-color: grey;
 }
