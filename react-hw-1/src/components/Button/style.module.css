@@ -1,14 +1,28 @@
 .buttonContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .button {
-    width: 120px;
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-    color:white;
-    background-color: darkcyan;
-    margin-bottom: 20px;
-    cursor: pointer;
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  background-color: darkcyan;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.primary {
+  background-color: brown;
+  color: white;
+}
+
+.secondary {
+  background-color: grey;
+  color: black;
+}
+
+.secondary2 {
+  background-color: transparent;
+  color: black;
 }
