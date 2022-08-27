@@ -3,7 +3,7 @@ import style from "./style.module.css";
 interface IButton {
   label: string;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
   type: "primary" | "secondary" | "secondary2";
 }
 
@@ -18,6 +18,7 @@ const getButtonStyle = (type: "primary" | "secondary" | "secondary2") => {
     return style.secondary2;
   }
 };
+
 export const Button = (props: IButton) => {
   return (
     <div className={style.buttonContainer}>

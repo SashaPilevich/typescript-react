@@ -5,6 +5,9 @@ import { Title } from "./components/Title";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
 import { User } from "./components/User";
+import { Clicker } from "./components/Clicker";
+import { PostList } from "./components/Posts/List";
+import { EmojiList } from "./components/Emoji/List";
 
 function App() {
   const submit = () => {
@@ -16,7 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <Title text={"Hello React!"} />
+      <Clicker />
+      <PostList />
+      <EmojiList />
+      {/* <Title text={"Hello React!"} />
       <Input type="text" placeholder="Введите логин" />
       <Input type="text" placeholder="Введите пароль" />
       <Input type="checkbox" text="Согласен на обработку данных" />
@@ -39,7 +45,7 @@ function App() {
         label="Войти"
       />
       <User userName="Alexandra Pilevich" isDark={false} />
-      <User userName="Alexandra Pilevich" isDark={true} />
+      <User userName="Alexandra Pilevich" isDark={true} /> */}
     </div>
   );
 }

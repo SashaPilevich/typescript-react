@@ -11,9 +11,6 @@ export const Clicker = () => {
   const onClickMinus = () => {
     setClickCount(clickCount - 1);
   };
-  const reset = () => {
-    setClickCount(0);
-  };
 
   return (
     <div>
