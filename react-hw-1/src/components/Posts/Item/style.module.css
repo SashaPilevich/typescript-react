@@ -29,7 +29,6 @@
 }
 .title {
   font-family: "Raleway";
-  font-style: normal;
   font-weight: 600;
   font-size: 20px;
   text-align: left;
@@ -40,9 +39,6 @@
 .text {
   height: 80px;
   font-family: "Raleway";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 19px;
   text-align: left;
   padding: 0 24px;
@@ -51,9 +47,7 @@
 }
 .date {
   font-family: "Raleway";
-  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   line-height: 19px;
   text-align: left;
   padding: 0 24px;

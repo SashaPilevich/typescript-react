@@ -27,7 +27,7 @@ export const Clicker = () => {
       )}
       {clickCount <= 0 && (
         <div>
-          <h2>Мало кликов</h2>
+          <h2>Нажми на +</h2>
           <Button
             label={"+"}
             onClick={onClickPlus}
