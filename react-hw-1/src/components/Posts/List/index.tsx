@@ -50,6 +50,7 @@ export const PostList = () => {
       {posts.map((item) => {
         return (
           <ItemOfPost
+            key={item.id}
             id={item.id}
             text={item.text}
             lesson_num={item.lesson_num}
