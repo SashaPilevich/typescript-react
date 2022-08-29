@@ -8,21 +8,41 @@
   border: none;
   border-radius: 20px;
   color: white;
-  background-color: darkcyan;
+  background-color: deeppink;
   margin-bottom: 20px;
   cursor: pointer;
 }
 .primary {
-  background-color: brown;
+  background-image: linear-gradient(
+    to right,
+    brown 0%,
+    rgb(178, 34, 80) 52%,
+    deeppink 100%
+  );
+  background-size: 200% auto;
+  transition: 0.5s;
   color: white;
 }
 
 .secondary {
-  background-color: grey;
+  background-image: linear-gradient(
+    to right,
+    cadetblue 0%,
+    darkcyan 52%,
+    rgb(7, 225, 241) 100%
+  );
+  background-size: 200% auto;
+  transition: 0.5s;
   color: black;
 }
 
 .secondary2 {
-  background-color: transparent;
+  background-color: gray;
   color: black;
+}
+.button.primary:hover {
+  background-position: right center;
+}
+.button.secondary:hover {
+  background-position: right center;
 }
