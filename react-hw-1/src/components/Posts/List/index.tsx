@@ -1,5 +1,5 @@
 import { ItemOfPost } from "../Item";
-import nature from "./nature.png";
+import image from "./nature.png";
 import style from "./style.module.css";
 
 export const generateDate = () => {
@@ -22,7 +22,7 @@ const posts = [
     lesson_num: 1,
     title: "What is Lorem Ipsum?",
     author: 1,
-    image: nature,
+    image: image,
     date: generateDate(),
   },
   {
@@ -31,7 +31,7 @@ const posts = [
     lesson_num: 2,
     title: "What is Lorem Ipsum?",
     author: 2,
-    image: nature,
+    image: image,
     date: generateDate(),
   },
   {
@@ -40,7 +40,7 @@ const posts = [
     lesson_num: 3,
     title: "What is Lorem Ipsum?",
     author: 3,
-    image: nature,
+    image: image,
     date: generateDate(),
   },
 ];

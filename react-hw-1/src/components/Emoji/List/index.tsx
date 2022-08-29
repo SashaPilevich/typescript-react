@@ -1,4 +1,4 @@
-import { emojies } from "../EmojiArray";
+import { emojies } from "../constants";
 import { EmojiRow } from "../Item";
 import style from "./style.module.css";
 
