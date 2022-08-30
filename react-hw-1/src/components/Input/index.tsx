@@ -1,19 +1,18 @@
-import style from "./style.module.css";
+import styles from "./style.module.css";
+import { ChangeEventHandler } from "react";
 
-interface IInput {
-    placeholder?: string;
-    type: string;
-    text?: string;
+interface Input {
+  value: string;
+  placeholder?: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
-
-export const Input = (props:IInput) => {
-    return (
-        <div className={style.inputContainer}>
-            <label className={style.customCheckbox}>
-            <input className={style.input} type={props.type} placeholder={props.placeholder} />
-            <span className={style.text}>{props.text}</span>
-            </label> 
-        </div>
-        
-    )
-}
+export const Input = (props: Input) => {
+  return (
+    <input
+      className={styles.input}
+      value={props.value}
+      placeholder={props.placeholder}
+      onChange={props.onChange}
+    ></input>
+  );
+};
