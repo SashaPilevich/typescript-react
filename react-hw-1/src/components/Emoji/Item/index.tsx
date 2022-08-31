@@ -3,6 +3,7 @@ import style from "./style.module.css";
 interface IProps {
   title: string;
   symbol: string;
+  keywords: string;
 }
 
 export const EmojiRow = (props: IProps) => {

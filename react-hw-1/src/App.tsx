@@ -8,19 +8,22 @@ import { User } from "./components/User";
 import { Clicker } from "./components/Clicker";
 import { PostList } from "./components/Posts/List";
 import { EmojiList } from "./components/Emoji/List";
+import { posts } from "./mocks";
+import { ListOfMyTodo } from "./components/Todo/List";
 
 function App() {
-  const submit = () => {
-    alert("Ваши данные обрабатываются");
-  };
-  const createForm = () => {
-    alert("Заполните форму");
-  };
+  // const submit = () => {
+  //   alert("Ваши данные обрабатываются");
+  // };
+  // const createForm = () => {
+  //   alert("Заполните форму");
+  // };
 
   return (
     <div className="App">
-      <Clicker />
-      <PostList />
+      {/* <Clicker /> */}
+      <ListOfMyTodo />
+      <PostList posts={posts} />
       <EmojiList />
       {/* <Title text={"Hello React!"} />
       <Input type="text" placeholder="Введите логин" />

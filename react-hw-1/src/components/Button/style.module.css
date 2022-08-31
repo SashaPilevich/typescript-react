@@ -1,23 +1,20 @@
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-}
 .button {
-  width: 120px;
-  height: 40px;
+  width: 100px;
+  height: 30px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   color: white;
   background-color: deeppink;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 .primary {
   background-image: linear-gradient(
     to right,
-    brown 0%,
+
+    indianred 0%,
     rgb(178, 34, 80) 52%,
-    deeppink 100%
+    rgb(234, 61, 61) 100%
   );
   background-size: 200% auto;
   transition: 0.5s;
@@ -40,9 +37,31 @@
   background-color: gray;
   color: black;
 }
+.delete {
+  width: 70px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+
+    indianred 0%,
+    rgb(178, 34, 80) 52%,
+    rgb(234, 61, 61) 100%
+  );
+  background-size: 200% auto;
+  transition: 0.5s;
+  color: white;
+}
 .button.primary:hover {
   background-position: right center;
 }
 .button.secondary:hover {
+  background-position: right center;
+}
+.button.delete:hover {
   background-position: right center;
 }

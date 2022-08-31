@@ -1,18 +1,15 @@
-.inputContainer {
-    margin-bottom: 30px;
-}
 .input {
-    margin: 0 auto 20px;
-    display: flex;
-    width: 220px;
-    height: 20px;
-    border: 2px solid cadetblue;
-    border-radius: 10px;
-    color:dimgrey;
-    outline: none;
+  margin: 0 15px 30px;
+  display: flex;
+  width: 250px;
+  height: 20px;
+  border: 1px solid cadetblue;
+  border-radius: 10px;
+  color: dimgrey;
+  outline: none;
 }
 .text {
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
-    color:gray;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: gray;
 }
