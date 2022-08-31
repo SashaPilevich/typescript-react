@@ -11,7 +11,6 @@ export const EmojiRow = (props: IProps) => {
     <div className={style.emojiItem}>
       <div className={style.emojiSymbol}>{props.symbol}</div>
       <h4>{props.title}</h4>
-      <p className={style.keywords}>{props.keywords}</p>
     </div>
   );
 };
