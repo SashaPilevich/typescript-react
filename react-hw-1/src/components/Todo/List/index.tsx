@@ -43,6 +43,7 @@ export const ListOfMyTodo = () => {
           <p className={style.text}>и сделайте ваш день продуктивным...</p>
           <div className={style.controlPanel}>
             <Input
+              uniqType="primary"
               value={title}
               onChange={handleOnChangeTitle}
               placeholder="Название вашего важного дела"

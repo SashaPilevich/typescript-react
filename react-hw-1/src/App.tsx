@@ -10,6 +10,11 @@ import { PostList } from "./components/Posts/List";
 import { EmojiList } from "./components/Emoji/List";
 import { posts } from "./mocks";
 import { ListOfMyTodo } from "./components/Todo/List";
+import { Converter } from "./components/Converter";
+import { Time } from "./components/Time";
+import { Timer } from "./components/Timer";
+import { Registration } from "./components/Registration";
+import { Header } from "./components/Header";
 
 function App() {
   // const submit = () => {
@@ -22,6 +27,11 @@ function App() {
   return (
     <div className="App">
       {/* <Clicker /> */}
+      <Header />
+      <Converter />
+      <Time />
+      <Timer />
+      <Registration />
       <ListOfMyTodo />
       <PostList posts={posts} />
       <EmojiList />

@@ -4,11 +4,23 @@ interface IButton {
   label: string;
   onClick: () => void;
   disabled?: boolean;
-  type: "primary" | "secondary" | "secondary2" | "delete";
+  type:
+    | "primary"
+    | "secondary"
+    | "secondary2"
+    | "delete"
+    | "forTimer"
+    | "buttonForRegistration";
 }
 
 const getButtonStyle = (
-  type: "primary" | "secondary" | "secondary2" | "delete"
+  type:
+    | "primary"
+    | "secondary"
+    | "secondary2"
+    | "delete"
+    | "forTimer"
+    | "buttonForRegistration"
 ) => {
   if (type === "primary") {
     return style.primary;
@@ -21,6 +33,12 @@ const getButtonStyle = (
   }
   if (type === "delete") {
     return style.delete;
+  }
+  if (type === "forTimer") {
+    return style.forTimer;
+  }
+  if (type === "buttonForRegistration") {
+    return style.buttonForRegistration;
   }
 };
 

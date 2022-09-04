@@ -1,0 +1,63 @@
+.header {
+  width: 1569px;
+  height: 147px;
+  background: #f8fafe;
+  /* display: flex;
+  justify-content: center; */
+}
+.container {
+  /* width: 1087px; */
+  height: 100%;
+  display: flex;
+  /* align-items: center; */
+}
+.burgerMenu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 27px;
+  height: 18px;
+  display: block;
+  z-index: 15;
+  cursor: pointer;
+}
+.linear1,
+.linear2,
+.linear3 {
+  display: block;
+  width: 27px;
+  height: 4px;
+  background-color: #007bff;
+  margin-bottom: 3px;
+}
+
+.burgerMenu:hover .linear1 {
+  background-color: #007bff;
+  opacity: 1;
+  transform: translateY(6px) translateX(0) rotate(45deg);
+}
+.burgerMenu:hover .linear2 {
+  opacity: 0;
+}
+.burgerMenu:hover .linear3 {
+  transform: translateY(-7px) translateX(0) rotate(-45deg);
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+img {
+  margin-right: 12px;
+}
+.userName {
+  width: 204px;
+  height: 43px;
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #016efc;
+}
