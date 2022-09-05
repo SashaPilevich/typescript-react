@@ -8,3 +8,21 @@
 .inputContainer {
   margin-bottom: 40px;
 }
+.text {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 134%;
+  letter-spacing: 0.03em;
+  color: #254050;
+}
+.linkLogin {
+  text-decoration: none;
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 134%;
+  letter-spacing: 0.03em;
+  color: #016efc;
+}

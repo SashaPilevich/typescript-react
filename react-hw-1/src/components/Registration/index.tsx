@@ -22,41 +22,52 @@ export const Registration = () => {
     setConfirmPassword(event.target.value);
   };
   return (
-    <div className={style.container}>
-      <div className={style.inputContainer}>
-        <Input
-          label="UserName"
-          onChange={getUserName}
-          value={userName}
-          uniqType={"inputForRegistration"}
+    <form>
+      <div className={style.container}>
+        <div className={style.inputContainer}>
+          <Input
+            label="UserName"
+            onChange={getUserName}
+            value={userName}
+            uniqType={"inputForRegistration"}
+          />
+        </div>
+        <div className={style.inputContainer}>
+          <Input
+            label="Email"
+            onChange={getEmail}
+            value={email}
+            uniqType={"inputForRegistration"}
+          />
+        </div>
+        <div className={style.inputContainer}>
+          <Input
+            label="Password"
+            onChange={getPassword}
+            value={password}
+            uniqType={"inputForRegistration"}
+          />
+        </div>
+        <div className={style.inputContainer}>
+          <Input
+            label="Confirm Password"
+            onChange={getConfirmPassword}
+            value={confirmPassword}
+            uniqType={"inputForRegistration"}
+          />
+        </div>
+        <Button
+          label="Login"
+          onClick={() => {}}
+          type={"buttonForRegistration"}
         />
+        <p className={style.text}>
+          If you have account, you can{" "}
+          <a className={style.linkLogin} href="#">
+            Login
+          </a>
+        </p>
       </div>
-      <div className={style.inputContainer}>
-        <Input
-          label="Email"
-          onChange={getEmail}
-          value={email}
-          uniqType={"inputForRegistration"}
-        />
-      </div>
-      <div className={style.inputContainer}>
-        <Input
-          label="Password"
-          onChange={getPassword}
-          value={password}
-          uniqType={"inputForRegistration"}
-        />
-      </div>
-      <div className={style.inputContainer}>
-        <Input
-          label="Confirm Password"
-          onChange={getConfirmPassword}
-          value={confirmPassword}
-          uniqType={"inputForRegistration"}
-        />
-      </div>
-
-      <Button label="Login" onClick={() => {}} type={"buttonForRegistration"} />
-    </div>
+    </form>
   );
 };

@@ -2,37 +2,44 @@
   width: 1569px;
   height: 147px;
   background: #f8fafe;
-  /* display: flex;
-  justify-content: center; */
 }
 .container {
-  /* width: 1087px; */
+  width: 1087px;
   height: 100%;
+  margin-left: 234px;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
 }
 .burgerMenu {
-  position: absolute;
-  top: 20px;
-  left: 20px;
   width: 27px;
   height: 18px;
   display: block;
-  z-index: 15;
   cursor: pointer;
+  margin-right: 40px;
 }
-.linear1,
+.linear1 {
+  display: block;
+  width: 18px;
+  height: 4px;
+  border-radius: 11px;
+  background-color: #007bff;
+  margin-bottom: 3px;
+}
 .linear2,
 .linear3 {
   display: block;
   width: 27px;
   height: 4px;
+  border-radius: 11px;
   background-color: #007bff;
   margin-bottom: 3px;
 }
 
 .burgerMenu:hover .linear1 {
-  background-color: #007bff;
+  width: 27px;
+  height: 1px;
+  background-color: #c41b1b;
+  border-radius: 0px;
   opacity: 1;
   transform: translateY(6px) translateX(0) rotate(45deg);
 }
@@ -40,7 +47,10 @@
   opacity: 0;
 }
 .burgerMenu:hover .linear3 {
-  transform: translateY(-7px) translateX(0) rotate(-45deg);
+  transform: translateY(-5px) translateX(0) rotate(-45deg);
+  height: 1px;
+  border-radius: 0px;
+  background-color: #d72f2f;
 }
 
 .user {
@@ -60,4 +70,36 @@ img {
   line-height: 145.2%;
   letter-spacing: 0.03em;
   color: #016efc;
+}
+.navContainer {
+  width: 1569px;
+  height: 295px;
+  background: #016efc;
+}
+.listContainer {
+  display: flex;
+  margin-left: 357px;
+}
+ul {
+  list-style-type: none;
+  padding-top: 138px;
+}
+li {
+  text-align: left;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 22px;
+  margin-right: 495px;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.dark {
+  padding-top: 140px;
 }
