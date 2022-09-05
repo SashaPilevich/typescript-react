@@ -14,7 +14,7 @@ import { Converter } from "./components/Converter";
 import { Time } from "./components/Time";
 import { Timer } from "./components/Timer";
 import { Registration } from "./components/Registration";
-import { Header, NavMenu } from "./components/Header";
+import { Header } from "./components/Header";
 
 function App() {
   // const submit = () => {
@@ -28,7 +28,6 @@ function App() {
     <div className="App">
       {/* <Clicker /> */}
       <Header />
-      <NavMenu />
       <Converter />
       <Time />
       <Timer />

@@ -2,8 +2,12 @@
   width: 1569px;
   height: 147px;
   background: #f8fafe;
+  margin-bottom: 200px;
 }
-.container {
+.hidden {
+  display: none;
+}
+.visible {
   width: 1087px;
   height: 100%;
   margin-left: 234px;
@@ -11,6 +15,14 @@
   align-items: center;
 }
 .burgerMenu {
+  width: 27px;
+  height: 18px;
+  display: block;
+  cursor: pointer;
+  margin-right: 40px;
+}
+.burgerMenuNav {
+  padding-top: 40px;
   width: 27px;
   height: 18px;
   display: block;
@@ -34,11 +46,24 @@
   background-color: #007bff;
   margin-bottom: 3px;
 }
+.linearNav1,
+.linearNav2 {
+  display: block;
+  width: 27px;
+  height: 1px;
+  background-color: #ffffff;
+}
+.linearNav1 {
+  transform: translateY(1px) translateX(0) rotate(45deg);
+}
+.linearNav2 {
+  transform: translateY(-1px) translateX(0) rotate(-45deg);
+}
 
 .burgerMenu:hover .linear1 {
   width: 27px;
   height: 1px;
-  background-color: #c41b1b;
+  background-color: #007bff;
   border-radius: 0px;
   opacity: 1;
   transform: translateY(6px) translateX(0) rotate(45deg);
@@ -50,7 +75,7 @@
   transform: translateY(-5px) translateX(0) rotate(-45deg);
   height: 1px;
   border-radius: 0px;
-  background-color: #d72f2f;
+  background-color: #007bff;
 }
 
 .user {
@@ -71,10 +96,13 @@ img {
   letter-spacing: 0.03em;
   color: #016efc;
 }
-.navContainer {
+.visibleNav {
   width: 1569px;
   height: 295px;
   background: #016efc;
+}
+.hiddenNav {
+  display: none;
 }
 .listContainer {
   display: flex;
