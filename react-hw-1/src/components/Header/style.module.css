@@ -17,67 +17,64 @@
 .burgerMenu {
   width: 27px;
   height: 18px;
-  display: block;
+  display: flex;
   cursor: pointer;
   margin-right: 40px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
 }
-.burgerMenuNav {
-  padding-top: 40px;
-  width: 27px;
-  height: 18px;
-  display: block;
-  cursor: pointer;
-  margin-right: 40px;
-}
-.linear1 {
-  display: block;
+
+.linear::before {
+  content: "";
+  position: absolute;
   width: 18px;
   height: 4px;
   border-radius: 11px;
   background-color: #007bff;
-  margin-bottom: 3px;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(-7px) translateX(-13px);
 }
-.linear2,
-.linear3 {
-  display: block;
+.linear {
   width: 27px;
   height: 4px;
   border-radius: 11px;
   background-color: #007bff;
-  margin-bottom: 3px;
+  transition: all 0.2s ease-in-out;
 }
-.linearNav1,
-.linearNav2 {
-  display: block;
+.linear::after {
+  content: "";
+  position: absolute;
   width: 27px;
-  height: 1px;
-  background-color: #ffffff;
+  height: 4px;
+  border-radius: 11px;
+  background-color: #007bff;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(7px) translateX(-13px);
 }
-.linearNav1 {
-  transform: translateY(1px) translateX(0) rotate(45deg);
+.open {
+  transform: translateX(-50px);
+  background: transparent;
 }
-.linearNav2 {
-  transform: translateY(-1px) translateX(0) rotate(-45deg);
-}
-
-.burgerMenu:hover .linear1 {
+.open::before {
+  content: "";
+  position: absolute;
   width: 27px;
-  height: 1px;
+  height: 4px;
+  border-radius: 11px;
   background-color: #007bff;
-  border-radius: 0px;
-  opacity: 1;
-  transform: translateY(6px) translateX(0) rotate(45deg);
+  transition: all 0.2s ease-in-out;
+  transform: rotate(45deg) translate(35px, -35px);
 }
-.burgerMenu:hover .linear2 {
-  opacity: 0;
-}
-.burgerMenu:hover .linear3 {
-  transform: translateY(-5px) translateX(0) rotate(-45deg);
-  height: 1px;
-  border-radius: 0px;
+.open::after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  border-radius: 11px;
   background-color: #007bff;
+  transition: all 0.2s ease-in-out;
+  transform: rotate(-45deg) translate(35px, 35px);
 }
-
 .user {
   display: flex;
   justify-content: space-between;
@@ -100,34 +97,29 @@ img {
   width: 1569px;
   height: 295px;
   background: #016efc;
+  transition: all 0.3s ease;
+  animation: navBar 0.7s linear 1;
+}
+@keyframes navBar {
+  0% {
+    transform: scale(0.8);
+    transition: all 0.3s ease-in-out;
+  }
+  25% {
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+  }
+  50% {
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+  }
+  75% {
+    transition: all 0.2s ease-in-out;
+  }
+  100% {
+    transition: all 0.5s ease-in-out;
+  }
 }
 .hiddenNav {
   display: none;
-}
-.listContainer {
-  display: flex;
-  margin-left: 357px;
-}
-ul {
-  list-style-type: none;
-  padding-top: 138px;
-}
-li {
-  text-align: left;
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 29px;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  margin-bottom: 22px;
-  margin-right: 495px;
-}
-a {
-  text-decoration: none;
-  color: #ffffff;
-}
-.dark {
-  padding-top: 140px;
 }
