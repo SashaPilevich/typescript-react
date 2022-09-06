@@ -12,7 +12,9 @@ interface Input {
     | "burgerMenu"
     | "inputForConverter"
     | "primary"
-    | "inputForRegistration";
+    | "inputForRegistration"
+    | "checkbox";
+  refObj?: any;
 }
 const getInputStyle = (
   uniqType:
@@ -20,6 +22,7 @@ const getInputStyle = (
     | "inputForConverter"
     | "primary"
     | "inputForRegistration"
+    | "checkbox"
 ) => {
   if (uniqType === "burgerMenu") {
     return style.burgerMenu;
@@ -33,6 +36,9 @@ const getInputStyle = (
   if (uniqType === "inputForRegistration") {
     return style.inputForRegistration;
   }
+  if (uniqType === "checkbox") {
+    return style.checkbox;
+  }
 };
 export const Input = (props: Input) => {
   return (
@@ -44,6 +50,8 @@ export const Input = (props: Input) => {
           value={props.value}
           placeholder={props.placeholder}
           onChange={props.onChange}
+          ref={props.refObj}
+          type={props.type}
         ></input>
       </label>
     </div>

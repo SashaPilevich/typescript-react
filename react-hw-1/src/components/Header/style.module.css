@@ -2,7 +2,12 @@
   width: 1569px;
   height: 147px;
   background: #f8fafe;
-  margin-bottom: 200px;
+}
+.headerMax {
+  width: 1569px;
+  height: 147px;
+  background: #f8fafe;
+  margin-bottom: 150px;
 }
 .hidden {
   display: none;

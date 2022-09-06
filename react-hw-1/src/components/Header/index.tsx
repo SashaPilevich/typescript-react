@@ -5,34 +5,37 @@ import { NavBar } from "../NavBar";
 
 export const Header = () => {
   const [clickMenu, setClickMenu] = useState(false);
-  const [headerStyle, setHeaderStyle] = useState("visible");
+  const [headerStyle, setHeaderStyle] = useState("header");
+  const [menuStyle, setMenuStyle] = useState("visible");
   const [navStyle, setNavStyle] = useState("hiddenNav");
   const [linearStyle, setLinearStyle] = useState("linear");
-  const styleHiddenHeader = () => {
-    setHeaderStyle("hidden");
+  const styleHiddenMenu = () => {
+    setMenuStyle("hidden");
   };
   const styleVisibleNav = () => {
     setNavStyle("visibleNav");
+    setHeaderStyle("headerMax");
   };
   const openNavBar = () => {
     if (!clickMenu) {
       setLinearStyle("open");
-      setTimeout(styleHiddenHeader, 500);
+      setTimeout(styleHiddenMenu, 500);
       setTimeout(styleVisibleNav, 500);
     }
     setClickMenu(true);
   };
   const closeNavBar = () => {
     if (clickMenu) {
-      setHeaderStyle("visible");
+      setMenuStyle("visible");
       setNavStyle("hiddenNav");
+      setHeaderStyle("header");
       setClickMenu(false);
       setLinearStyle("linear");
     }
   };
   return (
-    <header className={style.header}>
-      <div className={style[headerStyle]}>
+    <header className={style[headerStyle]}>
+      <div className={style[menuStyle]}>
         <div className={style.burgerMenu} onClick={openNavBar}>
           <div className={style[linearStyle]}></div>
         </div>

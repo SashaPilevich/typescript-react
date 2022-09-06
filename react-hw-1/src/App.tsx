@@ -15,26 +15,25 @@ import { Time } from "./components/Time";
 import { Timer } from "./components/Timer";
 import { Registration } from "./components/Registration";
 import { Header } from "./components/Header";
+import { Main } from "./pages/Main";
+import { RegistrationPage } from "./pages/RegistrationPage";
+import { Login } from "./components/LoginForm";
 
 function App() {
-  // const submit = () => {
-  //   alert("Ваши данные обрабатываются");
-  // };
-  // const createForm = () => {
-  //   alert("Заполните форму");
-  // };
-
   return (
     <div className="App">
-      {/* <Clicker /> */}
-      <Header />
+      <RegistrationPage />
+      {/* <Header /> */}
+      {/* <Registration /> */}
       <Converter />
       <Time />
       <Timer />
-      <Registration />
-      <ListOfMyTodo />
-      <PostList posts={posts} />
-      <EmojiList />
+      {/* <Main /> */}
+      {/* <Login /> */}
+      {/* <PostList posts={posts} /> */}
+      {/* <ListOfMyTodo /> */}
+      {/* <EmojiList /> */}
+      {/* <Clicker /> */}
       {/* <Title text={"Hello React!"} />
       <Input type="text" placeholder="Введите логин" />
       <Input type="text" placeholder="Введите пароль" />
