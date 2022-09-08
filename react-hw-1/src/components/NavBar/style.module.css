@@ -1,0 +1,49 @@
+.burgerMenuNav {
+  padding-top: 40px;
+  width: 27px;
+  height: 18px;
+  display: block;
+  cursor: pointer;
+  margin-right: 40px;
+}
+
+.linearNav1,
+.linearNav2 {
+  display: block;
+  width: 27px;
+  height: 1px;
+  background-color: #ffffff;
+}
+.linearNav1 {
+  transform: translateY(1px) translateX(0) rotate(45deg);
+}
+.linearNav2 {
+  transform: translateY(-1px) translateX(0) rotate(-45deg);
+}
+.listContainer {
+  display: flex;
+  margin-left: 357px;
+}
+ul {
+  list-style-type: none;
+  padding-top: 100px;
+}
+li {
+  text-align: left;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 22px;
+  margin-right: 495px;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.dark {
+  padding-top: 140px;
+}

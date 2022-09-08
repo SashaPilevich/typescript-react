@@ -10,21 +10,30 @@ import { PostList } from "./components/Posts/List";
 import { EmojiList } from "./components/Emoji/List";
 import { posts } from "./mocks";
 import { ListOfMyTodo } from "./components/Todo/List";
+import { Converter } from "./components/Converter";
+import { Time } from "./components/Time";
+import { Timer } from "./components/Timer";
+import { Registration } from "./components/Registration";
+import { Header } from "./components/Header";
+import { Main } from "./pages/Main";
+import { RegistrationPage } from "./pages/RegistrationPage";
+import { Login } from "./components/LoginForm";
 
 function App() {
-  // const submit = () => {
-  //   alert("Ваши данные обрабатываются");
-  // };
-  // const createForm = () => {
-  //   alert("Заполните форму");
-  // };
-
   return (
     <div className="App">
+      <RegistrationPage />
+      {/* <Header /> */}
+      {/* <Registration /> */}
+      <Converter />
+      <Time />
+      <Timer />
+      {/* <Main /> */}
+      {/* <Login /> */}
+      {/* <PostList posts={posts} /> */}
+      {/* <ListOfMyTodo /> */}
+      {/* <EmojiList /> */}
       {/* <Clicker /> */}
-      <ListOfMyTodo />
-      <PostList posts={posts} />
-      <EmojiList />
       {/* <Title text={"Hello React!"} />
       <Input type="text" placeholder="Введите логин" />
       <Input type="text" placeholder="Введите пароль" />

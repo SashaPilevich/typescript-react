@@ -21,7 +21,7 @@ export const EmojiList = () => {
   });
   return (
     <div className={style.container}>
-      <Input value={text} onChange={handleOnChange} />
+      <Input value={text} onChange={handleOnChange} uniqType="primary" />
       <div className={style.emojiListContainer}>
         {filteredEmojies.map((item) => {
           return (
