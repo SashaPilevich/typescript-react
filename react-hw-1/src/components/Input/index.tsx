@@ -1,5 +1,6 @@
 import style from "./style.module.css";
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, useContext } from "react";
+import { Context } from "../../App";
 
 interface Input {
   placeholder?: string;
@@ -41,12 +42,17 @@ const getInputStyle = (
   }
 };
 export const Input = (props: Input) => {
+  const { isDark } = useContext(Context);
   return (
     <div>
-      <label className={style.label}>
+      <label
+        className={`${style.label} ${isDark ? style.darkLabel : style.label}`}
+      >
         {props.label}
         <input
-          className={`${style.input} ${getInputStyle(props.uniqType)}`}
+          className={`${style.input} ${
+            isDark ? style.darkInput : getInputStyle(props.uniqType)
+          }`}
           value={props.value}
           placeholder={props.placeholder}
           onChange={props.onChange}
