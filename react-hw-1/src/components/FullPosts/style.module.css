@@ -5,7 +5,7 @@
   margin-bottom: 30px;
   margin-right: 40px;
   background-color: white;
-  box-shadow: 0px 6px 50px rgb(27 33 39 / 15%);
+  box-shadow: 0px 6px 50px rgb(47 54 60 / 15%);
   border-radius: 13px;
   position: relative;
 }
@@ -22,6 +22,13 @@
   left: 0;
   bottom: 0;
 }
+/* .darkContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 15px;
+  color: white;
+} */
 .image {
   width: 296px;
   height: 120px;

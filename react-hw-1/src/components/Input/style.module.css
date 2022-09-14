@@ -36,6 +36,15 @@
   border: 4px solid #82a9ff;
   border-radius: 200px;
 }
+.darkInput {
+  margin-top: 15px;
+  width: 372px;
+  height: 63px;
+  background: #254050;
+  border: 4px solid white;
+  border-radius: 200px;
+  color: white;
+}
 .label {
   width: 166px;
   height: 29px;
@@ -45,4 +54,14 @@
   line-height: 29px;
   letter-spacing: 0.05em;
   color: #254050;
+}
+.darkLabel {
+  width: 166px;
+  height: 29px;
+  font-family: "Raleway";
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: white;
 }

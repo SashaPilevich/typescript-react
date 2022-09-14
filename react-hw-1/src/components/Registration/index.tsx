@@ -1,6 +1,7 @@
 import { ChangeEventHandler, useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 
 export const Registration = () => {
@@ -63,9 +64,9 @@ export const Registration = () => {
         />
         <p className={style.text}>
           If you have account, you can{" "}
-          <a className={style.linkLogin} href="#">
+          <Link className={style.linkLogin} to="/login">
             Login
-          </a>
+          </Link>
         </p>
       </div>
     </form>
