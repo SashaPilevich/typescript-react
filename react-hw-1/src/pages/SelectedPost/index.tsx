@@ -1,32 +1,26 @@
 import { Container } from "../../components/Container";
 import { FullPosts } from "../../components/FullPosts";
 import { Header } from "../../components/Header";
-import { IPost } from "../../types/post";
+import { posts } from "../../mocks";
 import style from "./style.module.css";
 
-interface IProps {
-  posts: IPost[];
-}
-export const SelectedPost = (props: IProps) => {
+export const SelectedPost = () => {
+  const selectedPost = posts[0];
   return (
     <Container>
       <Header />
       <h2 className={style.selectedPost}>Selected Post</h2>
       <div className={style.container}>
-        {props.posts.map((item) => {
-          return (
-            <FullPosts
-              key={item.id}
-              id={item.id}
-              text={item.text}
-              lesson_num={item.lesson_num}
-              title={item.title}
-              author={item.author}
-              image={item.image}
-              date={item.date}
-            />
-          );
-        })}
+        <FullPosts
+          key={selectedPost.id}
+          id={selectedPost.id}
+          text={selectedPost.text}
+          lesson_num={selectedPost.lesson_num}
+          title={selectedPost.title}
+          author={selectedPost.author}
+          image={selectedPost.image}
+          date={selectedPost.date}
+        />
       </div>
     </Container>
   );

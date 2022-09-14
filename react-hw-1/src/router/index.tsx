@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { posts } from "../mocks";
 import { EmailConfirmed } from "../pages/EmailConfirmed";
 import { LoginPage } from "../pages/Login";
 import { Main } from "../pages/Main";
@@ -13,7 +12,7 @@ export const RootRouter = () => {
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/selectedpost" element={<SelectedPost posts={posts} />} />
+      <Route path="/selectedpost" element={<SelectedPost />} />
       <Route path="/registersuccess" element={<RegisterSuccess />} />
       <Route path="/emailconfirmed" element={<EmailConfirmed />} />
     </Routes>
