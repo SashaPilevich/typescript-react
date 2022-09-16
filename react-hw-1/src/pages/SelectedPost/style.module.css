@@ -1,9 +1,11 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  column-gap: 30px;
-  padding: 20px 15px;
+  width: 1440px;
+  height: 1157px;
+  background: #ffffff;
+  border-radius: 25px;
+}
+.darkContainer {
+  background: black;
 }
 .selectedPost {
   font-family: "Raleway";

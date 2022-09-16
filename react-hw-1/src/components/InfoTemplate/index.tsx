@@ -1,31 +1,26 @@
+import { ReactNode } from "react";
 import { Button } from "../Button";
 import style from "./style.module.css";
 
 interface IProps {
   title: string;
-  textFirst: string;
-  textSecond: string;
-  textThird?: string;
+  children: ReactNode;
   labelBtn: string;
+  onClick: () => void;
 }
 export const InfoTemplate = ({
   title,
-  textFirst,
-  textSecond,
-  textThird,
+  children,
+  onClick,
   labelBtn,
 }: IProps) => {
   return (
     <div className={style.container}>
       <h2 className={style.title}>{title}</h2>
-      <div className={style.textContainer}>
-        <p className={style.text}>{textFirst}</p>
-        <p className={style.text}>{textSecond}</p>
-        <p className={style.text}>{textThird}</p>
-      </div>
+      <div className={style.textContainer}>{children}</div>
       <Button
         label={`${labelBtn}`}
-        onClick={() => {}}
+        onClick={onClick}
         type="buttonForRegistration"
       />
     </div>

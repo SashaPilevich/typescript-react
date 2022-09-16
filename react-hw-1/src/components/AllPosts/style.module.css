@@ -1,0 +1,31 @@
+.infoPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.title {
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #016efc;
+  margin-right: 550px;
+  margin-left: 110px;
+}
+.textSearch {
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #016efc;
+}
+.noPosts {
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #016efc;
+}

@@ -5,26 +5,28 @@
   margin-bottom: 30px;
   margin-right: 40px;
   background-color: white;
-  box-shadow: 0px 6px 50px rgb(27 33 39 / 15%);
+  box-shadow: 0px 6px 50px rgba(184, 196, 209, 0.15);
   border-radius: 13px;
   position: relative;
 }
-.container:hover::before {
-  width: 385px;
-  height: 360px;
-  content: "";
-  display: block;
-  clear: both;
-  border: 1px solid cadetblue;
+.largePost {
+  width: 675px;
+  height: 604px;
+  background: #fdfdff;
+  border: 1px solid #ebebeb;
   border-radius: 13px;
-  transition: 0.5s;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  box-shadow: 0px 6px 50px rgba(184, 196, 209, 0.15);
+  margin-left: 115px;
+  margin-bottom: 300px;
 }
 .image {
   width: 296px;
   height: 120px;
+  margin: 0 auto;
+}
+.largeImage {
+  width: 615px;
+  height: 250px;
   margin: 0 auto;
 }
 .title {
@@ -44,6 +46,15 @@
   padding: 0 24px;
   color: #979797;
   overflow: hidden;
+}
+.largeText {
+  height: auto;
+  font-family: "Raleway";
+  line-height: 19px;
+  text-align: left;
+  padding: 0 24px;
+  color: #979797;
+  overflow: visible;
 }
 .date {
   font-family: "Raleway";
