@@ -63,6 +63,7 @@ export const Registration = () => {
             onChange={getUserName}
             value={userName}
             uniqType={"inputForRegistration"}
+            error={userError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -71,6 +72,7 @@ export const Registration = () => {
             onChange={getEmail}
             value={email}
             uniqType={"inputForRegistration"}
+            error={emailError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -79,6 +81,7 @@ export const Registration = () => {
             onChange={getPassword}
             value={password}
             uniqType={"inputForRegistration"}
+            error={passwordError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -87,6 +90,7 @@ export const Registration = () => {
             onChange={getConfirmPassword}
             value={confirmPassword}
             uniqType={"inputForRegistration"}
+            error={confirmPasswordError}
           />
         </div>
         <Button

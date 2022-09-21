@@ -14,16 +14,17 @@ export const validateEmail = (value: string): any => {
     return "Обязательное поле";
   }
   if (!emailRegExp.test(value)) {
-    alert("Неправильный формат email");
+    return "Неправильный формат email";
   }
   if (!latinSymbol.test(value)) {
-    alert("Используйте латинские символы");
+    return "Используйте латинские символы";
   }
+  return "";
 };
 
 export const validatePassword = (value: string) => {
   if (!passwordRegExp.test(value)) {
-    alert("Пароль должен содержать цифры и буквы в разных регистрах");
+    return "Пароль должен содержать цифры и буквы в разных регистрах";
   }
   return "";
 };
@@ -33,7 +34,7 @@ export const validateConfirmPassword = (
   confirmPassword: string
 ): any => {
   if (password !== confirmPassword) {
-    return alert("Пароли не совпадают");
+    return "Пароли не совпадают";
   }
   return "";
 };
