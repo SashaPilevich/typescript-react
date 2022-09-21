@@ -3,14 +3,33 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import { Link } from "react-router-dom";
 import style from "./style.module.css";
+import {
+  validateConfirmPassword,
+  validateEmail,
+  validatePassword,
+  validateRequired,
+} from "../../utils/validation";
 
 export const Registration = () => {
   const [userName, setUserName] = useState("");
+  const [userError, setUserError] = useState("");
+
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   const getUserName: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const error = validateRequired(event.target.value);
+    if (error) {
+      setUserError(error);
+    } else {
+      setUserError("");
+    }
     setUserName(event.target.value);
   };
   const getEmail: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -22,6 +41,19 @@ export const Registration = () => {
   const getConfirmPassword: ChangeEventHandler<HTMLInputElement> = (event) => {
     setConfirmPassword(event.target.value);
   };
+  const onClickLogin = () => {
+    const errors = {
+      userName: validateRequired(userName),
+      email: validateEmail(email),
+      password: validatePassword(password),
+      confirmPassword: validateConfirmPassword(password, confirmPassword),
+    };
+    setUserError(errors.userName);
+    setEmailError(errors.email);
+    setPasswordError(errors.password);
+    setConfirmPasswordError(errors.confirmPassword);
+    const isValidForm = Object.values(errors).every((error) => error === "");
+  };
   return (
     <form>
       <div className={style.container}>
@@ -31,6 +63,7 @@ export const Registration = () => {
             onChange={getUserName}
             value={userName}
             uniqType={"inputForRegistration"}
+            error={userError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -39,6 +72,7 @@ export const Registration = () => {
             onChange={getEmail}
             value={email}
             uniqType={"inputForRegistration"}
+            error={emailError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -47,6 +81,7 @@ export const Registration = () => {
             onChange={getPassword}
             value={password}
             uniqType={"inputForRegistration"}
+            error={passwordError}
           />
         </div>
         <div className={style.inputContainer}>
@@ -55,11 +90,12 @@ export const Registration = () => {
             onChange={getConfirmPassword}
             value={confirmPassword}
             uniqType={"inputForRegistration"}
+            error={confirmPasswordError}
           />
         </div>
         <Button
           label="Login"
-          onClick={() => {}}
+          onClick={onClickLogin}
           type={"buttonForRegistration"}
         />
         <p className={style.text}>

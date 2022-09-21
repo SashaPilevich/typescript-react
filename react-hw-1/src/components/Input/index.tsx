@@ -17,6 +17,7 @@ interface Input {
     | "checkbox"
     | "search";
   refObj?: any;
+  error?: string;
 }
 const getInputStyle = (
   uniqType:
