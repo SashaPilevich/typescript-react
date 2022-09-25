@@ -28,7 +28,7 @@ export const SelectedPost = () => {
     <Container>
       <Header />
       <div
-        className={`${style.container} ${isDark} ? ${style.darkContainer} : ""`}
+        className={`${style.container} ${isDark ? style.darkContainer : ""}`}
       >
         <h2 className={style.selectedPost}>Selected Post</h2>
         {post ? (

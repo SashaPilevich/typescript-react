@@ -24,6 +24,7 @@
   margin-right: 40px;
   position: relative;
   transition: all 0.2s ease-in-out;
+  padding-top: 20px;
 }
 
 .linear::before {

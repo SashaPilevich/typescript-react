@@ -1,9 +1,11 @@
 import style from "./style.module.css";
 import img from "./ico.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavBar } from "../NavBar";
+import { Context } from "../../App";
 
 export const Header = () => {
+  const { user } = useContext(Context);
   const [clickMenu, setClickMenu] = useState(false);
   const [headerStyle, setHeaderStyle] = useState("header");
   const [menuStyle, setMenuStyle] = useState("visible");
@@ -39,10 +41,14 @@ export const Header = () => {
         <div className={style.burgerMenu} onClick={openNavBar}>
           <div className={style[linearStyle]}></div>
         </div>
-        <div className={style.user}>
-          <img src={img} alt="UserIcon" />
-          <p className={style.userName}>Username</p>
-        </div>
+        {user ? (
+          <>
+            <div className={style.user}>
+              <img src={img} alt="UserIcon" />
+              <p className={style.userName}>{user}</p>
+            </div>
+          </>
+        ) : null}
       </div>
       {clickMenu ? (
         <div className={style[navStyle]}>

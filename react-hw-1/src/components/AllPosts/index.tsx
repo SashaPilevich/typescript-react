@@ -1,6 +1,7 @@
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEventHandler, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchPosts } from "../../api/posts";
+import { Context } from "../../App";
 import { IPost } from "../../types/post";
 import { Button } from "../Button";
 import { Input } from "../Input";
@@ -13,13 +14,18 @@ export const AllPosts = () => {
   const [showLoadMore, setShowLoadMore] = useState(true);
   const [noPosts, setNoPosts] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(Context);
 
   const navigate = useNavigate();
   const navigateToFullPost = (id: number) => {
     navigate(`/selectedpost/${id}`);
   };
 
-  const goBack = () => {
+  const navigateToAddPost = () => {
+    navigate("/addpost");
+  };
+
+  const backToAllPost = () => {
     setSearchText("");
     setNoPosts(false);
   };
@@ -81,7 +87,17 @@ export const AllPosts = () => {
   return (
     <>
       <div className={style.infoPanel}>
-        <h2 className={style.title}>All posts</h2>
+        {user ? (
+          <div className={style.container}>
+            <h2 className={style.titleLogin}>All posts</h2>{" "}
+            <button className={style.btnAdd} onClick={navigateToAddPost}>
+              +Add
+            </button>
+          </div>
+        ) : (
+          <h2 className={style.title}>All posts</h2>
+        )}
+
         <p className={style.textSearch}>Search</p>
         <Input
           onChange={handleOnChangeSearch}
@@ -102,7 +118,7 @@ export const AllPosts = () => {
           ) : (
             <Button
               label={"Go Back"}
-              onClick={goBack}
+              onClick={backToAllPost}
               type="buttonForRegistration"
             />
           )}
