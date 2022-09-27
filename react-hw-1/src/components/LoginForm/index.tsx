@@ -58,9 +58,9 @@ export const Login = () => {
               .then((response) => {
                 return response.json();
               })
-              .then((datauser) => {
-                setUser(datauser.username);
+              .then((user) => {
                 navigate("/");
+                setUser(user);
               });
           } else {
             //обработка ошибок

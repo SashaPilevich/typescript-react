@@ -3,6 +3,7 @@ import img from "./ico.svg";
 import { useContext, useState } from "react";
 import { NavBar } from "../NavBar";
 import { Context } from "../../App";
+import { User } from "../User";
 
 export const Header = () => {
   const { user } = useContext(Context);
@@ -45,7 +46,7 @@ export const Header = () => {
           <>
             <div className={style.user}>
               <img src={img} alt="UserIcon" />
-              <p className={style.userName}>{user}</p>
+              <User userName={user.username} isDark={false} />
             </div>
           </>
         ) : null}

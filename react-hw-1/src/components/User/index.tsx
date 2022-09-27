@@ -13,19 +13,21 @@ const getUser = (userName: string) => {
 
 export const User = (props: IUser) => {
   return (
-    <div
-      className={`${style.userContainer} ${
-        props.isDark ? style.userDarkFull : ""
-      }`}
-    >
+    <div className={style.mainContainer}>
       <div
-        className={`${style.userShort} ${
-          props.isDark ? style.userDarkShort : ""
+        className={`${style.userContainer} ${
+          props.isDark ? style.userDarkFull : ""
         }`}
       >
-        {getUser(props.userName)}
+        <div
+          className={`${style.userShort} ${
+            props.isDark ? style.userDarkShort : ""
+          }`}
+        >
+          {getUser(props.userName)}
+        </div>
+        <p className={style.userFull}>{props.userName}</p>
       </div>
-      <p className={style.userFull}>{props.userName}</p>
     </div>
   );
 };

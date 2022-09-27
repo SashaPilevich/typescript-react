@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../App";
 import { DarkModeToggle } from "../DarkModeToggle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 import img from "./Iconlogout.svg";
 
@@ -10,8 +10,8 @@ interface IProps {
 }
 
 export const NavBar = ({ onClose }: IProps) => {
-  const { isDark, setIsDark, user } = useContext(Context);
-
+  const { isDark, setIsDark, user, setUser } = useContext(Context);
+  const navigate = useNavigate();
   const handleOnChange = () => {
     if (isDark) {
       setIsDark(false);
@@ -19,6 +19,11 @@ export const NavBar = ({ onClose }: IProps) => {
       setIsDark(true);
     }
     // setIsDark(!isDark)
+  };
+  const logOut = () => {
+    navigate("/");
+    setUser(null);
+    localStorage.clear();
   };
   return (
     <div className={style.listContainer}>
@@ -39,7 +44,7 @@ export const NavBar = ({ onClose }: IProps) => {
             </div>
           </div>
           <div>
-            <button className={style.logOut} onClick={() => {}}>
+            <button className={style.logOut} onClick={logOut}>
               Log out
             </button>
             <img

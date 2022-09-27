@@ -33,13 +33,8 @@ export const AllPosts = () => {
   useEffect(() => {
     setIsLoading(true);
     if (searchText.length === 0) {
-      const promise = fetch(
-        "https://studapi.teachmeskills.by/blog/posts/?limit=5"
-      );
+      const promise = fetchPosts(searchText, posts.length);
       promise
-        .then((response) => {
-          return response.json();
-        })
         .then((values) => {
           setPosts(values.results);
           setShowLoadMore(true);
