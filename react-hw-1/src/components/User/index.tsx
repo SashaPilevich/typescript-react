@@ -1,31 +1,33 @@
+import { useContext } from "react";
+import { Context } from "../../App";
 import style from "./style.module.css";
 
 interface IUser {
   userName: string;
-  isDark: boolean;
 }
 
 const getUser = (userName: string) => {
   let str = userName.split(" ");
-  let result = str.map((item) => item[0]);
+  let result = str.map((item) => item[0].toUpperCase());
   return result;
 };
 
 export const User = (props: IUser) => {
+  const { isDark } = useContext(Context);
   return (
-    <div
-      className={`${style.userContainer} ${
-        props.isDark ? style.userDarkFull : ""
-      }`}
-    >
+    <div className={style.mainContainer}>
       <div
-        className={`${style.userShort} ${
-          props.isDark ? style.userDarkShort : ""
+        className={`${style.userContainer} ${
+          isDark ? style.darkUserContainer : ""
         }`}
       >
-        {getUser(props.userName)}
+        <div
+          className={`${style.userShort} ${isDark ? style.darkUserShort : ""}`}
+        >
+          {getUser(props.userName)}
+        </div>
+        <p className={style.userFull}>{props.userName}</p>
       </div>
-      <p className={style.userFull}>{props.userName}</p>
     </div>
   );
 };

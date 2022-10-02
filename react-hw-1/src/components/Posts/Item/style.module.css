@@ -1,32 +1,32 @@
 .container {
-  width: 340px;
-  height: 300px;
-  padding: 30px 21px 30px 24px;
+  width: 320px;
+  height: auto;
+  padding: 25px 21px 20px 20px;
   margin-bottom: 30px;
-  margin-right: 40px;
   background-color: white;
-  box-shadow: 0px 6px 50px rgba(184, 196, 209, 0.15);
+  box-shadow: 0px 0px 50px 0px rgba(56, 58, 60, 0.15);
   border-radius: 13px;
   position: relative;
 }
 .largePost {
-  width: 675px;
-  height: 604px;
+  width: 400px;
+  height: auto;
   background: #fdfdff;
   border: 1px solid #ebebeb;
   border-radius: 13px;
   box-shadow: 0px 6px 50px rgba(184, 196, 209, 0.15);
   margin-left: 115px;
-  margin-bottom: 300px;
+  margin-bottom: 30px;
 }
 .image {
-  width: 296px;
-  height: 120px;
+  width: 300px;
+  height: 250px;
   margin: 0 auto;
+  border-radius: 10px;
 }
 .largeImage {
-  width: 615px;
-  height: 250px;
+  width: 400px;
+  height: 500px;
   margin: 0 auto;
 }
 .title {
@@ -39,7 +39,7 @@
   padding: 0 24px;
 }
 .text {
-  height: 80px;
+  height: 20px;
   font-family: "Raleway";
   line-height: 19px;
   text-align: left;
@@ -63,4 +63,5 @@
   text-align: left;
   padding: 0 24px;
   color: #016efc;
+  margin: 0;
 }

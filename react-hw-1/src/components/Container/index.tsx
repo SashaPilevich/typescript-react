@@ -7,7 +7,16 @@ interface IProps {
 }
 
 export const Container = ({ children }: IProps) => {
-  const { isDark } = useContext(Context);
+  const { isDark, setIsDark } = useContext(Context);
+
+  {
+    isDark
+      ? localStorage.setItem("theme", "dark")
+      : localStorage.setItem("theme", "light");
+  }
+  {
+    isDark ? setIsDark(true) : setIsDark(false);
+  }
 
   return (
     <div className={isDark ? style.darkContainer : style.container}>

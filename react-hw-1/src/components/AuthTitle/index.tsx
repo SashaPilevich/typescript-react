@@ -1,12 +1,21 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Context } from "../../App";
 import style from "./style.module.css";
 export const AuthTitle = () => {
+  const { isDark } = useContext(Context);
   return (
     <div className={style.container}>
       <NavLink
         to="/login"
         className={({ isActive }) =>
-          isActive ? style.active_link : style.unactive
+          !isDark
+            ? isActive
+              ? style.active_link
+              : style.unactive
+            : isActive
+            ? style.darkActiveLink
+            : style.darkUnactive
         }
       >
         Login
@@ -15,7 +24,13 @@ export const AuthTitle = () => {
       <NavLink
         to="/registration"
         className={({ isActive }) =>
-          isActive ? style.active_link : style.unactive
+          !isDark
+            ? isActive
+              ? style.active_link
+              : style.unactive
+            : isActive
+            ? style.darkActiveLink
+            : style.darkUnactive
         }
       >
         Registration

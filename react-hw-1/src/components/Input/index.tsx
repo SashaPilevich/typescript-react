@@ -4,8 +4,8 @@ import { Context } from "../../App";
 
 interface Input {
   placeholder?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  value: string | number;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string | number;
   type?: string;
   label?: string;
   id?: string;
@@ -18,6 +18,9 @@ interface Input {
     | "search";
   refObj?: any;
   error?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  pattern?: string;
 }
 const getInputStyle = (
   uniqType:
@@ -58,13 +61,21 @@ export const Input = (props: Input) => {
         <input
           className={`${style.input} ${
             isDark ? style.darkInput : getInputStyle(props.uniqType)
-          }`}
+          } ${props.error ? style.error : ""}`}
           value={props.value}
           placeholder={props.placeholder}
           onChange={props.onChange}
           ref={props.refObj}
           type={props.type}
+          required={true}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
         ></input>
+        <div
+          className={`${style.textError} ${isDark ? style.darkTextError : ""}`}
+        >
+          {props.error}
+        </div>
       </label>
     </div>
   );

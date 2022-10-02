@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { Context } from "../../App";
 import style from "./style.module.css";
 
 interface IProps {
   inputChecked: boolean;
   onChange: () => void;
 }
+
 export const DarkModeToggle = ({ inputChecked, onChange }: IProps) => {
   return (
     <div className={style.switchCheckbox}>

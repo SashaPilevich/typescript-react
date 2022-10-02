@@ -1,7 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import { EmailConfirmed } from "../pages/EmailConfirmed";
+import { ReactNode, useContext } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { Context } from "../App";
+import { Activation } from "../pages/Activation";
+import { AddPost } from "../pages/AddPost";
+import { Error } from "../pages/Error";
 import { LoginPage } from "../pages/Login";
 import { Main } from "../pages/Main";
+import { MyPostPage } from "../pages/MyPostPage";
 import { RegisterSuccess } from "../pages/RegisterSuccess";
 import { RegistrationPage } from "../pages/RegistrationPage";
 import { SelectedPost } from "../pages/SelectedPost";
@@ -12,9 +17,22 @@ export const RootRouter = () => {
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/selectedpost/:id" element={<SelectedPost />} />
       <Route path="/registersuccess" element={<RegisterSuccess />} />
-      <Route path="/emailconfirmed" element={<EmailConfirmed />} />
+      <Route path="/activate/:uid/:token" element={<Activation />} />
+      <Route path="/selectedpost/:id" element={<SelectedPost />} />
+      <Route path="/addpost" element={useLoginGuard(<AddPost />)} />
+      <Route path="/myposts" element={useLoginGuard(<MyPostPage />)} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
+};
+
+const useLoginGuard = (component: ReactNode) => {
+  const { user } = useContext(Context);
+  console.log(user);
+  if (user) {
+    return component;
+  } else {
+    return <Navigate to="/login" />;
+  }
 };

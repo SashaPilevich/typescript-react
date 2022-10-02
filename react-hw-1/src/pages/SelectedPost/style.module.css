@@ -5,9 +5,10 @@
   border-radius: 25px;
 }
 .darkContainer {
-  background: black;
+  background: rgb(7, 67, 84);
 }
-.selectedPost {
+.selectedPost,
+.darkSelectedPost {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 700;
@@ -17,4 +18,11 @@
   color: #016efc;
   text-align: left;
   margin-left: 112px;
+}
+.darkSelectedPost {
+  color: white;
+}
+.btnContainer {
+  display: flex;
+  margin-left: 120px;
 }

@@ -1,24 +1,35 @@
 import style from "./style.module.css";
 import img from "./ico.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavBar } from "../NavBar";
+import { Context } from "../../App";
+import { User } from "../User";
 
 export const Header = () => {
+  const { user, isDark } = useContext(Context);
   const [clickMenu, setClickMenu] = useState(false);
   const [headerStyle, setHeaderStyle] = useState("header");
   const [menuStyle, setMenuStyle] = useState("visible");
   const [navStyle, setNavStyle] = useState("hiddenNav");
   const [linearStyle, setLinearStyle] = useState("linear");
+
+  const [linearDark, setLinearDark] = useState("darkLinear");
   const styleHiddenMenu = () => {
     setMenuStyle("hidden");
   };
   const styleVisibleNav = () => {
-    setNavStyle("visibleNav");
+    {
+      isDark ? setNavStyle("darkVisibleNav") : setNavStyle("visibleNav");
+    }
+
     setHeaderStyle("headerMax");
   };
+
   const openNavBar = () => {
     if (!clickMenu) {
-      setLinearStyle("open");
+      {
+        isDark ? setLinearStyle("darkOpen") : setLinearStyle("open");
+      }
       setTimeout(styleHiddenMenu, 500);
       setTimeout(styleVisibleNav, 500);
     }
@@ -29,20 +40,29 @@ export const Header = () => {
       setMenuStyle("visible");
       setNavStyle("hiddenNav");
       setHeaderStyle("header");
-      setClickMenu(false);
       setLinearStyle("linear");
+      setClickMenu(false);
     }
   };
   return (
     <header className={style[headerStyle]}>
       <div className={style[menuStyle]}>
         <div className={style.burgerMenu} onClick={openNavBar}>
-          <div className={style[linearStyle]}></div>
+          <div
+            className={`${style[linearStyle]} ${
+              isDark ? style[linearDark] : null
+            }`}
+          ></div>
         </div>
-        <div className={style.user}>
-          <img src={img} alt="UserIcon" />
-          <p className={style.userName}>Username</p>
-        </div>
+        {user ? (
+          <>
+            <div className={style.user}>
+              {!isDark ? <img src={img} alt="UserIcon" /> : ""}
+
+              <User userName={user.username} />
+            </div>
+          </>
+        ) : null}
       </div>
       {clickMenu ? (
         <div className={style[navStyle]}>
