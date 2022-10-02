@@ -1,7 +1,12 @@
 import style from "./style.module.css";
 import { picture1 } from "../../../assets";
 import { IPost } from "../../../types/post";
-import { useState, ReactEventHandler } from "react";
+import { useState, ReactEventHandler, useContext } from "react";
+import { Context } from "../../../App";
+import { Button } from "../../Button";
+import { removePost } from "../../../api/posts";
+import { NotificationManager } from "react-notifications";
+import { useNavigate } from "react-router-dom";
 
 interface IItem extends IPost {
   isLarge?: boolean;

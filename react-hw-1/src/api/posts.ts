@@ -1,8 +1,9 @@
+import { visitFunctionBody } from "typescript";
 import { tmsFetch } from "../utils/fetch";
 
 export const fetchPosts = (searchText: string, offset: number) => {
   return fetch(
-    `https://studapi.teachmeskills.by/blog/posts/?limit=5&search=${searchText}&offset=${offset}`
+    `https://studapi.teachmeskills.by/blog/posts/?limit=6&search=${searchText}&offset=${offset}`
   ).then((response) => {
     return response.json();
   });
@@ -11,7 +12,24 @@ export const fetchPosts = (searchText: string, offset: number) => {
 export const fetchMyPosts = () => {
   return tmsFetch("https://studapi.teachmeskills.by/blog/posts/my_posts/").then(
     (response) => {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      } else {
+        return { status: response.status };
+      }
     }
   );
+};
+
+export const createPost = (body: FormData) => {
+  return tmsFetch("https://studapi.teachmeskills.by/blog/posts/", {
+    method: "POST",
+    body: body,
+  });
+};
+
+export const removePost = (id: number) => {
+  return tmsFetch(`https://studapi.teachmeskills.by/blog/posts/${id}`, {
+    method: "DELETE",
+  });
 };

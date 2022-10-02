@@ -12,7 +12,8 @@ interface IButton {
     | "secondary2"
     | "delete"
     | "forTimer"
-    | "buttonForRegistration";
+    | "buttonForRegistration"
+    | "remove";
 }
 
 const getButtonStyle = (
@@ -23,6 +24,7 @@ const getButtonStyle = (
     | "delete"
     | "forTimer"
     | "buttonForRegistration"
+    | "remove"
 ) => {
   if (type === "primary") {
     return style.primary;
@@ -41,6 +43,9 @@ const getButtonStyle = (
   }
   if (type === "buttonForRegistration") {
     return style.buttonForRegistration;
+  }
+  if (type === "remove") {
+    return style.remove;
   }
 };
 

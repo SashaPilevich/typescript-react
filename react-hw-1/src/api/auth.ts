@@ -27,6 +27,7 @@ export const activateUser = (uid: string, token: string) => {
       "Content-Type": "application/json",
     },
   }).then((response) => {
+    console.log(response);
     return response.json();
   });
 };
@@ -42,7 +43,7 @@ export const login = (email: string, password: string) => {
 };
 
 export const getUser = () => {
-  return tmsFetch("https://studapi.teachmeskills.by/auth/users/me", {
+  return tmsFetch("https://studapi.teachmeskills.by/auth/users/me/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

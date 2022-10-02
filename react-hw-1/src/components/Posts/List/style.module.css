@@ -1,6 +1,8 @@
 .container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-items: center;
+  padding: 20px 60px;
 }

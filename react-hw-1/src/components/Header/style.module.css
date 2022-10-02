@@ -12,7 +12,7 @@
 }
 .visible {
   height: 100%;
-  margin-left: 234px;
+  margin-left: 120px;
   display: flex;
   align-items: center;
 }
@@ -54,11 +54,41 @@
   transition: all 0.2s ease-in-out;
   transform: translateY(7px) translateX(-13px);
 }
-.open {
+
+.darkLinear::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 4px;
+  border-radius: 11px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(-7px) translateX(-13px);
+}
+.darkLinear {
+  width: 27px;
+  height: 4px;
+  border-radius: 11px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+.darkLinear::after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  border-radius: 11px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(7px) translateX(-13px);
+}
+.open,
+.darkOpen {
   transform: translateX(-50px);
   background: transparent;
 }
-.open::before {
+.open::before,
+.darkOpen::before {
   content: "";
   position: absolute;
   width: 27px;
@@ -68,7 +98,8 @@
   transition: all 0.2s ease-in-out;
   transform: rotate(45deg) translate(35px, -35px);
 }
-.open::after {
+.open::after,
+.darkOpen::after {
   content: "";
   position: absolute;
   width: 27px;
@@ -77,6 +108,10 @@
   background-color: #007bff;
   transition: all 0.2s ease-in-out;
   transform: rotate(-45deg) translate(35px, 35px);
+}
+.darkOpen::before,
+.darkOpen::after {
+  background-color: white;
 }
 .user {
   display: flex;
@@ -96,13 +131,19 @@ img {
   letter-spacing: 0.03em;
   color: #016efc;
 }
-.visibleNav {
+.visibleNav,
+.darkVisibleNav {
   width: 1569px;
   height: 295px;
   background: #016efc;
   transition: all 0.3s ease;
   animation: navBar 0.7s linear 1;
 }
+.darkVisibleNav {
+  background: rgb(7, 67, 84);
+  border-bottom: 2px solid goldenrod;
+}
+
 @keyframes navBar {
   0% {
     transform: scale(0.8);
@@ -123,6 +164,7 @@ img {
     transition: all 0.5s ease-in-out;
   }
 }
+
 .hiddenNav {
   display: none;
 }

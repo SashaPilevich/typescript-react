@@ -10,7 +10,8 @@
   margin-bottom: 30px;
   text-align: left;
 }
-.text {
+.text,
+.darkText {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -19,7 +20,11 @@
   letter-spacing: 0.03em;
   color: #254050;
 }
-.linkLogin {
+.darkText {
+  color: white;
+}
+.linkLogin,
+.darkLinkLogin {
   text-decoration: none;
   font-family: "Raleway";
   font-weight: 700;
@@ -27,6 +32,9 @@
   line-height: 134%;
   letter-spacing: 0.03em;
   color: #016efc;
+}
+.darkLinkLogin {
+  color: goldenrod;
 }
 .textError {
   color: brown;

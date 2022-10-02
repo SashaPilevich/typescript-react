@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import { login, getUser } from "../../api/auth";
 import { validateEmail, validatePassword } from "../../utils/validation";
+import { Preloader } from "../Preloader";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,13 +22,16 @@ export const Login = () => {
   const [passwordError, setPasswordError] = useState("");
 
   const [error, setError] = useState("");
-  const refEmail = useRef(null);
-  const refPassword = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const refEmail = useRef(null);
+  // const refPassword = useRef(null);
   const navigate = useNavigate();
-  const { setUser } = useContext(Context);
+  const { setUser, isDark } = useContext(Context);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     setError("");
+    setIsLoading(true);
     const errors = {
       email: validateEmail(email),
       password: validatePassword(password),
@@ -39,6 +43,7 @@ export const Login = () => {
     const isValidForm = Object.values(errors).every((error) => error === "");
     if (isValidForm) {
       setError("");
+
       let isOk = true;
       login(email, password)
         .then((response) => {
@@ -115,45 +120,54 @@ export const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={style.container}>
-        <div className={style.inputContainer}>
-          <Input
-            label="Email"
-            value={email}
-            onChange={handleEmail}
-            uniqType={"inputForRegistration"}
-            refObj={refEmail}
-            onBlur={handleEmailBlur}
-            onFocus={handleEmailFocus}
-            error={emailError}
+      {!isLoading ? (
+        <div className={style.container}>
+          <div className={style.inputContainer}>
+            <Input
+              label="Email"
+              value={email}
+              onChange={handleEmail}
+              uniqType={"inputForRegistration"}
+              // refObj={refEmail}
+              onBlur={handleEmailBlur}
+              onFocus={handleEmailFocus}
+              error={emailError}
+            />
+          </div>
+          <div className={style.inputContainer}>
+            <Input
+              label="Password"
+              value={password}
+              onChange={handlePassword}
+              uniqType={"inputForRegistration"}
+              // refObj={refPassword}
+              type="password"
+              onBlur={handlePasswordBlur}
+              onFocus={handlePasswordFocus}
+              error={passwordError}
+            />
+          </div>
+          <p className={style.textError}>{error}</p>
+          <Button
+            type="buttonForRegistration"
+            onClick={() => {}}
+            label={"Login"}
           />
+          <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+            Forgot your password?{" "}
+            <a
+              className={`${style.linkLogin} ${
+                isDark ? style.darkLinkLogin : ""
+              }`}
+              href="#"
+            >
+              Reset Password
+            </a>
+          </p>
         </div>
-        <div className={style.inputContainer}>
-          <Input
-            label="Password"
-            value={password}
-            onChange={handlePassword}
-            uniqType={"inputForRegistration"}
-            refObj={refPassword}
-            type="password"
-            onBlur={handlePasswordBlur}
-            onFocus={handlePasswordFocus}
-            error={passwordError}
-          />
-        </div>
-        <p className={style.textError}>{error}</p>
-        <Button
-          type="buttonForRegistration"
-          onClick={() => {}}
-          label={"Login"}
-        />
-        <p className={style.text}>
-          Forgot your password?{" "}
-          <a className={style.linkLogin} href="#">
-            Reset Password
-          </a>
-        </p>
-      </div>
+      ) : (
+        <Preloader />
+      )}
     </form>
   );
 };

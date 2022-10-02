@@ -20,6 +20,7 @@ interface Input {
   error?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  pattern?: string;
 }
 const getInputStyle = (
   uniqType:
@@ -70,7 +71,11 @@ export const Input = (props: Input) => {
           onFocus={props.onFocus}
           onBlur={props.onBlur}
         ></input>
-        <p className={style.textError}>{props.error}</p>
+        <div
+          className={`${style.textError} ${isDark ? style.darkTextError : ""}`}
+        >
+          {props.error}
+        </div>
       </label>
     </div>
   );

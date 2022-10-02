@@ -1,6 +1,7 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../api/auth";
+import { Context } from "../../App";
 import {
   validateConfirmPassword,
   validateEmail,
@@ -9,9 +10,12 @@ import {
 } from "../../utils/validation";
 import { Button } from "../Button";
 import { Input } from "../Input";
+import { Preloader } from "../Preloader";
 import style from "./style.module.css";
 
 export const Registration = () => {
+  const { isDark } = useContext(Context);
+
   const [user, setUser] = useState("");
   const [userError, setUserError] = useState("");
 
@@ -26,6 +30,7 @@ export const Registration = () => {
 
   const [error, setError] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const openPassword = () => {
     setShowPassword(false);
@@ -79,6 +84,7 @@ export const Registration = () => {
   ///регистрация по клику
   const onClickLogin = () => {
     setError("");
+    // setIsLoading(true);
     const errors = {
       user: validateRequired(user),
       email: validateEmail(email),
@@ -171,79 +177,96 @@ export const Registration = () => {
   };
   return (
     <div className={style.container}>
-      <div className={style.inputContainer}>
-        <Input
-          label="UserName"
-          onChange={handleUser}
-          value={user}
-          uniqType={"inputForRegistration"}
-          error={userError}
-        />
-      </div>
-      <div className={style.inputContainer}>
-        <Input
-          label="Email"
-          onChange={handleEmail}
-          value={email}
-          uniqType={"inputForRegistration"}
-          error={emailError}
-          onBlur={handleEmailBlur}
-          onFocus={handleEmailFocus}
-        />
-      </div>
+      {!isLoading ? (
+        <>
+          <div className={style.inputContainer}>
+            <Input
+              label="UserName"
+              onChange={handleUser}
+              value={user}
+              uniqType={"inputForRegistration"}
+              error={userError}
+            />
+          </div>
+          <div className={style.inputContainer}>
+            <Input
+              label="Email"
+              onChange={handleEmail}
+              value={email}
+              uniqType={"inputForRegistration"}
+              error={emailError}
+              onBlur={handleEmailBlur}
+              onFocus={handleEmailFocus}
+            />
+          </div>
 
-      {showPassword ? (
-        <div className={style.inputPasswordShow} onClick={openPassword}>
-          <Input
-            uniqType="inputForRegistration"
-            label="Password"
-            onChange={handlePassword}
-            value={password}
-            error={passwordError}
-            onBlur={handlePasswordBlur}
-            onFocus={handlePasswordFocus}
-            type="password"
+          {showPassword ? (
+            <div className={style.inputPasswordShow} onClick={openPassword}>
+              <Input
+                uniqType="inputForRegistration"
+                label="Password"
+                onChange={handlePassword}
+                value={password}
+                error={passwordError}
+                onBlur={handlePasswordBlur}
+                onFocus={handlePasswordFocus}
+                type="password"
+              />
+            </div>
+          ) : (
+            <div className={style.inputPasswordClose} onClick={closePassword}>
+              <Input
+                uniqType="inputForRegistration"
+                label="Password"
+                onChange={handlePassword}
+                value={password}
+                error={passwordError}
+                onBlur={handlePasswordBlur}
+                onFocus={handlePasswordFocus}
+                type="text"
+              />
+            </div>
+          )}
+
+          <div className={style.inputContainer}>
+            <Input
+              label="Confirm Password"
+              onChange={handleConfirmPassword}
+              value={confirmPassword}
+              uniqType={"inputForRegistration"}
+              error={confirmPasswordError}
+              onBlur={handleConfirmBlur}
+              onFocus={handleConfirmFocus}
+              type="password"
+            />
+          </div>
+          <p
+            className={`${style.textError} ${
+              isDark ? style.darkTextError : ""
+            }`}
+          >
+            {error}
+          </p>
+          <Button
+            label="Register"
+            onClick={onClickLogin}
+            type={"buttonForRegistration"}
           />
-        </div>
+          <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+            If you have account, you can{" "}
+            <Link
+              className={`${style.linkLogin} ${
+                isDark ? style.darkLinkLogin : ""
+              }`}
+              to="/login"
+            >
+              Login
+            </Link>
+          </p>
+        </>
       ) : (
-        <div className={style.inputPasswordClose} onClick={closePassword}>
-          <Input
-            uniqType="inputForRegistration"
-            label="Password"
-            onChange={handlePassword}
-            value={password}
-            error={passwordError}
-            onBlur={handlePasswordBlur}
-            onFocus={handlePasswordFocus}
-            type="text"
-          />
-        </div>
+        <Preloader />
       )}
-
-      <div className={style.inputContainer}>
-        <Input
-          label="Confirm Password"
-          onChange={handleConfirmPassword}
-          value={confirmPassword}
-          uniqType={"inputForRegistration"}
-          error={confirmPasswordError}
-          onBlur={handleConfirmBlur}
-          onFocus={handleConfirmFocus}
-          type="password"
-        />
-      </div>
-      <p className={style.textError}>{error}</p>
-      <Button
-        label="Register"
-        onClick={onClickLogin}
-        type={"buttonForRegistration"}
-      />
-      <p className={style.text}>
-        If you have account, you can{" "}
-        <Link className={style.linkLogin} to="/login">
-          Login
-        </Link>
-      </p>
     </div>
   );
 };

@@ -5,6 +5,9 @@ import { RootRouter } from "./router";
 import userEvent from "@testing-library/user-event";
 import { IUser } from "./types/auth";
 import { getUser } from "./api/auth";
+import "react-notifications/lib/notifications.css";
+import { NotificationContainer } from "react-notifications";
+import { Preloader } from "./components/Preloader";
 
 export const Context = createContext<{
   isDark: boolean;
@@ -18,26 +21,35 @@ export const Context = createContext<{
   setUser: (value: IUser | null) => {},
 });
 
+const access = localStorage.getItem("access");
+
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [user, setUser] = useState<IUser | null>(null);
+  const [isReady, setIsReady] = useState(!access);
 
   useEffect(() => {
     let isOk = true;
-    getUser()
-      .then((response) => {
-        if (response.ok) {
-          isOk = true;
-        } else {
-          isOk = false;
-        }
-        return response.json();
-      })
-      .then((json) => {
-        if (isOk) {
-          setUser(json);
-        }
-      });
+
+    if (access) {
+      getUser()
+        .then((response) => {
+          if (response.ok) {
+            isOk = true;
+          } else {
+            isOk = false;
+          }
+          return response.json();
+        })
+        .then((json) => {
+          if (isOk) {
+            setUser(json);
+          }
+        })
+        .finally(() => {
+          setIsReady(true);
+        });
+    }
   }, []);
   return (
     <div className="App">
@@ -45,8 +57,9 @@ function App() {
         <Context.Provider
           value={{ isDark: isDark, setIsDark: setIsDark, user, setUser }}
         >
-          <RootRouter />
+          {isReady ? <RootRouter /> : <Preloader />}
         </Context.Provider>
+        <NotificationContainer />
       </BrowserRouter>
     </div>
   );

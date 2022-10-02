@@ -9,10 +9,11 @@ export const Error = () => {
   };
   return (
     <div className={style.container}>
-      <img className={style.imgError} src={error} alt="error"></img>
-      <button onClick={returnBack} className={style.btn}>
-        на главную
-      </button>
+      <div className={style.btnContainer}>
+        <button onClick={returnBack} className={style.btn}>
+          на главную
+        </button>
+      </div>
     </div>
   );
 };

@@ -24,6 +24,7 @@
   background: url("show.png") no-repeat;
   background-position: right;
   background-size: cover;
+  cursor: pointer;
 }
 .inputPasswordClose {
   margin-bottom: 20px;
@@ -39,10 +40,12 @@
   height: 25px;
   background: url("close.png") no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 .text,
-.textError {
+.textError,
+.darkText {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
@@ -51,7 +54,11 @@
   letter-spacing: 0.03em;
   color: #254050;
 }
-.linkLogin {
+.darkText {
+  color: white;
+}
+.linkLogin,
+.darkLinkLogin {
   text-decoration: none;
   font-family: "Raleway";
   font-weight: 700;
@@ -60,8 +67,15 @@
   letter-spacing: 0.03em;
   color: #016efc;
 }
-.textError {
+.darkLinkLogin {
+  color: goldenrod;
+}
+.textError,
+.darkTextError {
   color: brown;
   font-weight: 700;
   margin-bottom: 40px;
+}
+.darkTextError {
+  color: goldenrod;
 }
