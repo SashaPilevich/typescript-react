@@ -4,9 +4,10 @@
   align-items: center;
   text-align: left;
   padding-top: 20px;
-  height: 500px;
+  height: 700px;
 }
-.title {
+.title,
+.darkTitle {
   font-family: "Raleway";
   font-weight: 700;
   font-size: 45px;
@@ -14,6 +15,9 @@
   letter-spacing: 0.03em;
   color: #016efc;
   margin-bottom: 70px;
+}
+.darkTitle {
+  color: goldenrod;
 }
 .text {
   font-family: "Raleway";

@@ -1,6 +1,9 @@
 .link {
   color: #016efc;
-  display: block;
+}
+.darkLinkLogin {
+  color: goldenrod;
+  font-weight: 700;
 }
 .text,
 .darkText {
@@ -12,5 +15,8 @@
   color: #254050;
 }
 .darkText {
-  color: white;
+  color: whitesmoke;
+}
+.inputContainer {
+  text-align: left;
 }

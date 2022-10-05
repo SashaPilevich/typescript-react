@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { activateUser } from "../../api/auth";
+import { Context } from "../../App";
 import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { InfoTemplate } from "../../components/InfoTemplate";
 import style from "./style.module.css";
 
 export const Activation = () => {
+  const { isDark } = useContext(Context);
   const navigate = useNavigate();
   const navigateToLogin = () => {
     navigate("/login");
@@ -23,8 +25,18 @@ export const Activation = () => {
       <InfoTemplate
         children={
           <>
-            <p className={style.textActivation}>Ваша регистрация завершена</p>
-            <p className={style.textActivation}>
+            <p
+              className={`${style.textActivation} ${
+                isDark ? style.darkTextActivation : ""
+              }`}
+            >
+              Ваша регистрация завершена
+            </p>
+            <p
+              className={`${style.textActivation} ${
+                isDark ? style.darkTextActivation : ""
+              }`}
+            >
               Теперь вы можете залогиниться
             </p>
           </>

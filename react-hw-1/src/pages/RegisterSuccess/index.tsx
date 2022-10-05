@@ -8,7 +8,7 @@ import { InfoTemplate } from "../../components/InfoTemplate";
 import style from "./style.module.css";
 
 export const RegisterSuccess = () => {
-  const { user } = useContext(Context);
+  const { isDark } = useContext(Context);
   const navigate = useNavigate();
   const navigateToHome = () => {
     navigate("/");
@@ -24,16 +24,15 @@ export const RegisterSuccess = () => {
         onClick={navigateToHome}
         labelBtn={"Home"}
       >
-        <p className={style.text}>Please activate your account with</p>
-        <p className={style.text}>
-          the activation link in the email{" "}
-          {user ? (
-            <a className={style.link} href="#">
-              {user?.email}
-            </a>
-          ) : null}
+        <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+          Please activate your account with
         </p>
-        <p className={style.text}>Please, check your email</p>
+        <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+          the activation link in the email{" "}
+        </p>
+        <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+          Please, check your email
+        </p>
       </InfoTemplate>
       <Button
         label={"Go Back"}

@@ -8,6 +8,8 @@ import { getUser } from "./api/auth";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 import { Preloader } from "./components/Preloader";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 export const Context = createContext<{
   isDark: boolean;
@@ -23,8 +25,16 @@ export const Context = createContext<{
 
 const access = localStorage.getItem("access");
 
+const getInitialTheme = () => {
+  const isDark = localStorage.getItem("isDark");
+  if (isDark) {
+    return JSON.parse(isDark);
+  }
+  return false;
+};
+
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(getInitialTheme());
   const [user, setUser] = useState<IUser | null>(null);
   const [isReady, setIsReady] = useState(!access);
 
@@ -51,16 +61,22 @@ function App() {
         });
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("isDark", String(isDark));
+  }, [isDark]);
   return (
     <div className="App">
-      <BrowserRouter>
-        <Context.Provider
-          value={{ isDark: isDark, setIsDark: setIsDark, user, setUser }}
-        >
-          {isReady ? <RootRouter /> : <Preloader />}
-        </Context.Provider>
-        <NotificationContainer />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Context.Provider
+            value={{ isDark: isDark, setIsDark: setIsDark, user, setUser }}
+          >
+            {isReady ? <RootRouter /> : <Preloader />}
+          </Context.Provider>
+          <NotificationContainer />
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

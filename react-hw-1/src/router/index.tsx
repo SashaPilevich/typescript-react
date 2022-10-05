@@ -3,12 +3,14 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { Context } from "../App";
 import { Activation } from "../pages/Activation";
 import { AddPost } from "../pages/AddPost";
+import { ConfirmPassword } from "../pages/ConfirmPassword";
 import { Error } from "../pages/Error";
 import { LoginPage } from "../pages/Login";
 import { Main } from "../pages/Main";
 import { MyPostPage } from "../pages/MyPostPage";
 import { RegisterSuccess } from "../pages/RegisterSuccess";
 import { RegistrationPage } from "../pages/RegistrationPage";
+import { ResetPassword } from "../pages/ResetPassword";
 import { SelectedPost } from "../pages/SelectedPost";
 
 export const RootRouter = () => {
@@ -22,6 +24,11 @@ export const RootRouter = () => {
       <Route path="/selectedpost/:id" element={<SelectedPost />} />
       <Route path="/addpost" element={useLoginGuard(<AddPost />)} />
       <Route path="/myposts" element={useLoginGuard(<MyPostPage />)} />
+      <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route
+        path="/password/reset/confirm/:uid/:token"
+        element={<ConfirmPassword />}
+      />
       <Route path="*" element={<Error />} />
     </Routes>
   );

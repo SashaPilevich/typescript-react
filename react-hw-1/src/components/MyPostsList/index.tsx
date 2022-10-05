@@ -1,28 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchMyPosts } from "../../api/posts";
+import { fetchMyPosts, removePost } from "../../api/posts";
 import { Context } from "../../App";
 import { IPost } from "../../types/post";
 import { PostList } from "../Posts/List";
+import { Preloader } from "../Preloader";
+import { NotificationManager } from "react-notifications";
 import style from "./style.module.css";
 
 export const MyPostsList = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { isDark } = useContext(Context);
-
   const navigate = useNavigate();
-  const navigateToFullPost = (id: number) => {
-    navigate(`/selectedpost/${id}`);
-  };
-
-  const navigateToAddPost = () => {
-    navigate("/addpost");
-  };
 
   useEffect(() => {
-    setIsLoading(true);
-
     fetchMyPosts()
       .then((values) => {
         if (values?.status === 404) {
@@ -35,6 +27,37 @@ export const MyPostsList = () => {
         setIsLoading(false);
       });
   }, []);
+
+  const navigateToFullPost = (id: number) => {
+    navigate(`/selectedpost/${id}`);
+  };
+
+  const navigateToAddPost = () => {
+    navigate("/addpost");
+  };
+
+  const deletePost = (id: number) => {
+    setIsLoading(true);
+    removePost(id)
+      .then((response) => {
+        if (response.ok) {
+          const newPosts = posts.filter((item) => {
+            if (item.id === id) {
+              return false;
+            }
+            return true;
+          });
+          setPosts(newPosts);
+          setIsLoading(false);
+          NotificationManager.success("Удаление поста", " Пост успешно удален");
+        } else {
+          NotificationManager.error("Удаление поста", "Пост не удален");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <>
@@ -52,11 +75,13 @@ export const MyPostsList = () => {
         </div>
       </div>
       {isLoading ? (
-        <div className={style.spinWrapper}>
-          <div className={style.spinner}></div>
-        </div>
+        <Preloader />
       ) : (
-        <PostList posts={posts} onClickPost={navigateToFullPost} />
+        <PostList
+          posts={posts}
+          onClickPost={navigateToFullPost}
+          onClickDelete={deletePost}
+        />
       )}
     </>
   );
