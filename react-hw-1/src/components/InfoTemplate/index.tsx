@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import { Context } from "../../App";
 import { Button } from "../Button";
 import style from "./style.module.css";
 
@@ -14,9 +15,12 @@ export const InfoTemplate = ({
   onClick,
   labelBtn,
 }: IProps) => {
+  const { isDark } = useContext(Context);
   return (
     <div className={style.container}>
-      <h2 className={style.title}>{title}</h2>
+      <h2 className={`${style.title} ${isDark ? style.darkTitle : ""}`}>
+        {title}
+      </h2>
       <div className={style.textContainer}>{children}</div>
       <Button
         label={`${labelBtn}`}

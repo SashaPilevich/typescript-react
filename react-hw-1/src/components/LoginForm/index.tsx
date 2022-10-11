@@ -8,7 +8,7 @@ import {
 import style from "./style.module.css";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import { login, getUser } from "../../api/auth";
 import { validateEmail, validatePassword } from "../../utils/validation";
@@ -120,54 +120,50 @@ export const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {!isLoading ? (
-        <div className={style.container}>
-          <div className={style.inputContainer}>
-            <Input
-              label="Email"
-              value={email}
-              onChange={handleEmail}
-              uniqType={"inputForRegistration"}
-              // refObj={refEmail}
-              onBlur={handleEmailBlur}
-              onFocus={handleEmailFocus}
-              error={emailError}
-            />
-          </div>
-          <div className={style.inputContainer}>
-            <Input
-              label="Password"
-              value={password}
-              onChange={handlePassword}
-              uniqType={"inputForRegistration"}
-              // refObj={refPassword}
-              type="password"
-              onBlur={handlePasswordBlur}
-              onFocus={handlePasswordFocus}
-              error={passwordError}
-            />
-          </div>
-          <p className={style.textError}>{error}</p>
-          <Button
-            type="buttonForRegistration"
-            onClick={() => {}}
-            label={"Login"}
+      <div className={style.container}>
+        <div className={style.inputContainer}>
+          <Input
+            label="Email"
+            value={email}
+            onChange={handleEmail}
+            uniqType={"inputForRegistration"}
+            // refObj={refEmail}
+            onBlur={handleEmailBlur}
+            onFocus={handleEmailFocus}
+            error={emailError}
           />
-          <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
-            Forgot your password?{" "}
-            <a
-              className={`${style.linkLogin} ${
-                isDark ? style.darkLinkLogin : ""
-              }`}
-              href="#"
-            >
-              Reset Password
-            </a>
-          </p>
         </div>
-      ) : (
-        <Preloader />
-      )}
+        <div className={style.inputContainer}>
+          <Input
+            label="Password"
+            value={password}
+            onChange={handlePassword}
+            uniqType={"inputForRegistration"}
+            // refObj={refPassword}
+            type="password"
+            onBlur={handlePasswordBlur}
+            onFocus={handlePasswordFocus}
+            error={passwordError}
+          />
+        </div>
+        <p className={style.textError}>{error}</p>
+        <Button
+          type="buttonForRegistration"
+          onClick={() => {}}
+          label={"Login"}
+        />
+        <p className={`${style.text} ${isDark ? style.darkText : ""}`}>
+          Forgot your password?{" "}
+          <Link
+            to="/resetpassword"
+            className={`${style.linkLogin} ${
+              isDark ? style.darkLinkLogin : ""
+            }`}
+          >
+            Reset Password
+          </Link>
+        </p>
+      </div>
     </form>
   );
 };

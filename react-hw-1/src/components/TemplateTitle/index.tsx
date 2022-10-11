@@ -17,12 +17,14 @@ export const AddPostItem = () => {
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { isDark } = useContext(Context);
 
   const removeImage = () => {
     setImage("");
   };
   const createNewPost = () => {
+    setIsLoading(true);
     const formData = new FormData();
     if (file) {
       formData.append("image", file);
@@ -30,11 +32,15 @@ export const AddPostItem = () => {
     formData.append("title", title);
     formData.append("lesson_num", lessonNum);
     formData.append("text", text);
-    createPost(formData).then((response) => {
-      if (response.ok) {
-        navigate("/myposts");
-      }
-    });
+    createPost(formData)
+      .then((response) => {
+        if (response.ok) {
+          navigate("/myposts");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
   const handleOnChange: ChangeEventHandler<HTMLInputElement> = (event: any) => {
     let fileReader = new FileReader();

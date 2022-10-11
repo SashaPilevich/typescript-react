@@ -54,32 +54,6 @@ export const AllPosts = () => {
       });
   }, [searchText]);
 
-  //   fetchPosts(searchText, posts.length)
-  //     .then((values) => {
-  //       if (searchText.length === 0) {
-  //         setPosts(values.results);
-  //         setShowLoadMore(true);
-  //         setNoPosts(false);
-  //       } else if (searchText && searchText.trim().length) {
-  //         // fetchPosts(searchText, posts.length).then((values) => {
-  //         if (values.count > values.results.length) {
-  //           setShowLoadMore(true);
-  //         } else {
-  //           setShowLoadMore(false);
-  //         }
-  //         setPosts(values.results);
-  //         if (values.results.length === 0) {
-  //           setNoPosts(true);
-  //         } else {
-  //           setNoPosts(false);
-  //         }
-  //       }
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, [searchText]);
-
   const loadMore = () => {
     fetchPosts(searchText, posts.length).then((values) => {
       if (values.results.length + posts.length === values.count) {
