@@ -4,25 +4,13 @@ import { AllPosts } from "../../components/AllPosts";
 import { Button } from "../../components/Button";
 import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
+import { PostsTabs } from "../../components/PostsTabs";
 
 export const Main = () => {
-  // const value = useSelector((state: { value: number }) => state.value);
-
-  // const dispatch = useDispatch();
-
-  // const increment = () => {
-  //   dispatch({ type: "increment" });
-  // };
   return (
     <Container>
       <Header />
-      {/* <p>{value}</p>
-      <Button
-        label={"click"}
-        onClick={increment}
-        type="buttonForRegistration"
-      /> */}
-      <AllPosts />
+      <PostsTabs />
     </Container>
   );
 };

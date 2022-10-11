@@ -1,20 +1,36 @@
 import style from "./style.module.css";
-import { picture1 } from "../../../assets";
+import { Like, Mark, picture1 } from "../../../assets";
 import { IPost } from "../../../types/post";
-import { useState, ReactEventHandler, useContext } from "react";
+import {
+  useState,
+  ReactEventHandler,
+  useContext,
+  MouseEventHandler,
+  MouseEvent,
+} from "react";
 import { Context } from "../../../App";
+import { useDispatch } from "react-redux";
+import { likePost, markPost } from "../../../redux/actions/posts";
 import { Button } from "../../Button";
-import { removePost } from "../../../api/posts";
-import { NotificationManager } from "react-notifications";
-import { useNavigate } from "react-router-dom";
 
 interface IItem extends IPost {
   isLarge?: boolean;
 }
 export const ItemOfPost = (props: IItem) => {
   const [image, setImage] = useState(props.image);
+  const { user } = useContext(Context);
+  const dispatch = useDispatch();
+  const { isLarge, ...post } = props;
   const handleError: ReactEventHandler<HTMLImageElement> = () => {
     setImage(picture1);
+  };
+  const handleLikePost: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    dispatch(likePost(post));
+  };
+  const handleMarkPost: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    dispatch(markPost(post));
   };
   return (
     <div
@@ -35,7 +51,19 @@ export const ItemOfPost = (props: IItem) => {
       <p className={`${style.text} ${props.isLarge ? style.largeText : ""}`}>
         {props.text}
       </p>
-      <h5 className={style.date}>{props.date}</h5>
+      <div className={style.info}>
+        <h5 className={style.date}>{props.date}</h5>
+        {user ? (
+          <>
+            <button onClick={handleLikePost}>
+              <Like fill={props.liked ? "yellow" : "black"} />
+            </button>
+            <button onClick={handleMarkPost}>
+              <Mark fill={props.marked ? "yellow" : "#C6DDFF"} />
+            </button>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 };

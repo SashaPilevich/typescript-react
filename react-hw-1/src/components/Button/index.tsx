@@ -13,7 +13,9 @@ interface IButton {
     | "delete"
     | "forTimer"
     | "buttonForRegistration"
-    | "remove";
+    | "remove"
+    | "activeTab"
+    | "unActiveTab";
 }
 
 const getButtonStyle = (
@@ -25,6 +27,8 @@ const getButtonStyle = (
     | "forTimer"
     | "buttonForRegistration"
     | "remove"
+    | "activeTab"
+    | "unActiveTab"
 ) => {
   if (type === "primary") {
     return style.primary;
@@ -46,6 +50,12 @@ const getButtonStyle = (
   }
   if (type === "remove") {
     return style.remove;
+  }
+  if (type === "activeTab") {
+    return style.activeTab;
+  }
+  if (type === "unActiveTab") {
+    return style.unActiveTab;
   }
 };
 

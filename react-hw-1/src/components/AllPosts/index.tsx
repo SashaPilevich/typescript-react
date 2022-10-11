@@ -1,66 +1,45 @@
 import { ChangeEventHandler, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { fetchPosts } from "../../api/posts";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../App";
-import { IPost } from "../../types/post";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { PostList } from "../Posts/List";
 import { Preloader } from "../Preloader";
 import style from "./style.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { TState } from "../../redux/store";
+import { loadAllPosts, loadMorePosts } from "../../redux/actions/posts";
 
 export const AllPosts = () => {
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const posts = useSelector((state: TState) => state.PostsReducer.allPosts);
+  const isLoading = useSelector(
+    (state: TState) => state.PostsReducer.isLoading
+  );
+  const showLoadMore = useSelector(
+    (state: TState) => state.PostsReducer.showLoadMore
+  );
+  const dispatch = useDispatch();
+
   const [searchText, setSearchText] = useState("");
-  const [showLoadMore, setShowLoadMore] = useState(true);
   const [noPosts, setNoPosts] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   const { user, isDark } = useContext(Context);
 
   const navigate = useNavigate();
-  const navigateToFullPost = (id: number) => {
-    navigate(`/selectedpost/${id}`);
-  };
-
   const navigateToAddPost = () => {
     navigate("/addpost");
   };
-
   const backToAllPost = () => {
     setSearchText("");
     setNoPosts(false);
-    navigate("/");
   };
 
   useEffect(() => {
-    fetchPosts(searchText, posts.length)
-      .then((values) => {
-        if (values.count > values.results.length) {
-          setShowLoadMore(true);
-          setNoPosts(false);
-        } else {
-          setShowLoadMore(false);
-        }
-        if (values.results.length === 0) {
-          setNoPosts(true);
-          setShowLoadMore(false);
-        } else {
-          setNoPosts(false);
-        }
-        setPosts(values.results);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    dispatch(loadAllPosts(searchText) as any);
   }, [searchText]);
 
   const loadMore = () => {
-    fetchPosts(searchText, posts.length).then((values) => {
-      if (values.results.length + posts.length === values.count) {
-        setShowLoadMore(false);
-      }
-      setPosts(posts.concat(values.results));
-    });
+    dispatch(loadMorePosts(searchText) as any);
   };
 
   const handleOnChangeSearch: ChangeEventHandler<HTMLInputElement> = (
@@ -109,7 +88,7 @@ export const AllPosts = () => {
       </div>
       {!isLoading ? (
         <>
-          <PostList posts={posts} onClickPost={navigateToFullPost} />
+          <PostList posts={posts} />
           {noPosts ? (
             <p className={`${style.noPosts} ${isDark ? style.darkNoPost : ""}`}>
               NO posts...

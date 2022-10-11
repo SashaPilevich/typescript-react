@@ -118,3 +118,26 @@
 .button.delete:hover {
   background-position: right center;
 }
+.activeTab,
+.unActiveTab {
+  width: 150px;
+  height: 40px;
+  background: #007bff;
+  border-right: 1px solid #007bff;
+  border-top: 1px solid #007bff;
+  border-radius: 0px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+.unActiveTab {
+  background-color: white;
+  color: #007bff;
+}
