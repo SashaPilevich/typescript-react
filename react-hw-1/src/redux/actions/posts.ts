@@ -71,6 +71,7 @@ export const loadMorePosts = (searchText: string) => {
       if (values.results.length + allPosts.length === values.count) {
         dispatch(setShowLoadMore(false));
       }
+
       dispatch(setAllPosts(allPosts.concat(values.results)));
     });
   };

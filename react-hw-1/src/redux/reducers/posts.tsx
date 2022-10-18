@@ -34,7 +34,7 @@ export const PostsReducer = (state = defaultState, action: AnyAction) => {
 
       const newAllPostsLike = state.allPosts.map((post) => {
         if (post.id === action.post.id) {
-          post.liked = !postLike.liked;
+          post.liked = !post.liked;
         }
         return post;
       });
@@ -58,7 +58,7 @@ export const PostsReducer = (state = defaultState, action: AnyAction) => {
 
       const newAllPostsMark = state.allPosts.map((post) => {
         if (post.id === action.post.id) {
-          post.marked = !postMark.marked;
+          post.marked = !post.marked;
         }
         return post;
       });
