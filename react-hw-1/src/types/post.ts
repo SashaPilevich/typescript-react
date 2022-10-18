@@ -6,4 +6,6 @@ export interface IPost {
   title: string;
   author: number;
   date: string;
+  liked?: boolean;
+  marked?: boolean;
 }

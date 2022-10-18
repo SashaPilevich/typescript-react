@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react";
+import { useNavigate } from "react-router-dom";
 import { IPost } from "../../../types/post";
 import { Button } from "../../Button";
 import { ItemOfPost } from "../Item";
@@ -6,17 +7,20 @@ import style from "./style.module.css";
 
 interface IProps {
   posts: IPost[];
-  onClickPost: (id: number) => void;
   onClickDelete?: (id: number) => void;
 }
 
 export const PostList = (props: IProps) => {
+  const navigate = useNavigate();
+  const navigateToFullPost = (id: number) => {
+    navigate(`/selectedpost/${id}`);
+  };
   return (
     <div className={style.container}>
       {props.posts.length !== 0
         ? props.posts.map((item) => {
             const clickPost = () => {
-              props.onClickPost(item.id);
+              navigateToFullPost(item.id);
             };
 
             const clickDelete: MouseEventHandler<HTMLButtonElement> = (
@@ -38,6 +42,8 @@ export const PostList = (props: IProps) => {
                   author={item.author}
                   image={item.image}
                   date={item.date}
+                  marked={item.marked}
+                  liked={item.liked}
                 />
                 {props.onClickDelete ? (
                   <Button

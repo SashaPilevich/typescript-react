@@ -65,3 +65,8 @@
   color: #016efc;
   margin: 0;
 }
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

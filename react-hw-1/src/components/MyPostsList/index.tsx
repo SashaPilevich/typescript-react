@@ -28,10 +28,6 @@ export const MyPostsList = () => {
       });
   }, []);
 
-  const navigateToFullPost = (id: number) => {
-    navigate(`/selectedpost/${id}`);
-  };
-
   const navigateToAddPost = () => {
     navigate("/addpost");
   };
@@ -77,11 +73,7 @@ export const MyPostsList = () => {
       {isLoading ? (
         <Preloader />
       ) : (
-        <PostList
-          posts={posts}
-          onClickPost={navigateToFullPost}
-          onClickDelete={deletePost}
-        />
+        <PostList posts={posts} onClickDelete={deletePost} />
       )}
     </>
   );
