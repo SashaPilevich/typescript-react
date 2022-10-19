@@ -69,9 +69,31 @@ export const PostsReducer = (state = defaultState, action: AnyAction) => {
       };
 
     case ACTIONS.SET_ALL_POSTS:
+      const newAllPosts = action.posts.map((post: IPost) => {
+        const likedPost = state.likedPosts.find((item) => {
+          if (item.id === post.id) {
+            return item;
+          }
+          return null;
+        });
+        if (likedPost) {
+          post.liked = true;
+        }
+        const markedPost = state.markedPosts.find((item) => {
+          if (item.id === post.id) {
+            return item;
+          }
+          return null;
+        });
+        if (markedPost) {
+          post.marked = true;
+        }
+        return post;
+      });
+
       return {
         ...state,
-        allPosts: action.posts,
+        allPosts: newAllPosts,
       };
     case ACTIONS.SET_IS_LOADING:
       return {

@@ -54,6 +54,9 @@ export const MyPostsList = () => {
         setIsLoading(false);
       });
   };
+  const editPost = (postId: number) => {
+    navigate(`/editpost/${postId}`);
+  };
 
   return (
     <>
@@ -73,7 +76,11 @@ export const MyPostsList = () => {
       {isLoading ? (
         <Preloader />
       ) : (
-        <PostList posts={posts} onClickDelete={deletePost} />
+        <PostList
+          posts={posts}
+          onClickDelete={deletePost}
+          onClickEdit={editPost}
+        />
       )}
     </>
   );

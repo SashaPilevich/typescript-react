@@ -6,3 +6,7 @@
   justify-items: center;
   padding: 20px 60px;
 }
+.btnContainer {
+  display: flex;
+  margin-left: 20px;
+}

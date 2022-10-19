@@ -1,5 +1,7 @@
-import { MouseEvent, useContext, useState } from "react";
+import { MouseEvent, useContext, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Context } from "../../App";
+import { loadAllPosts } from "../../redux/actions/posts";
 import { AllPosts } from "../AllPosts";
 import { Button } from "../Button";
 import { LikedPosts } from "../LikedPosts";
@@ -24,6 +26,10 @@ export const getTabList = (tab: ITab) => {
 export const PostsTabs = () => {
   const { user } = useContext(Context);
   const [selectedTab, setSelectedTab] = useState<ITab>("All");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadAllPosts("") as any);
+  }, []);
   if (!user) {
     return <AllPosts />;
   }

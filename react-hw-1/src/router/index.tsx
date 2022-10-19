@@ -4,6 +4,7 @@ import { Context } from "../App";
 import { Activation } from "../pages/Activation";
 import { AddPost } from "../pages/AddPost";
 import { ConfirmPassword } from "../pages/ConfirmPassword";
+import { EditPost } from "../pages/EditPost";
 import { Error } from "../pages/Error";
 import { LoginPage } from "../pages/Login";
 import { Main } from "../pages/Main";
@@ -24,6 +25,7 @@ export const RootRouter = () => {
       <Route path="/selectedpost/:id" element={<SelectedPost />} />
       <Route path="/addpost" element={useLoginGuard(<AddPost />)} />
       <Route path="/myposts" element={useLoginGuard(<MyPostPage />)} />
+      <Route path="/editpost/:id" element={<EditPost />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
       <Route
         path="/password/reset/confirm/:uid/:token"
