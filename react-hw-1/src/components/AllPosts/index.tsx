@@ -32,11 +32,8 @@ export const AllPosts = () => {
   const backToAllPost = () => {
     setSearchText("");
     setNoPosts(false);
+    dispatch(loadAllPosts("") as any);
   };
-
-  useEffect(() => {
-    dispatch(loadAllPosts(searchText) as any);
-  }, [searchText]);
 
   const loadMore = () => {
     dispatch(loadMorePosts(searchText) as any);
@@ -45,7 +42,9 @@ export const AllPosts = () => {
   const handleOnChangeSearch: ChangeEventHandler<HTMLInputElement> = (
     event
   ) => {
-    setSearchText(event.target.value);
+    const text = event.target.value;
+    setSearchText(text);
+    dispatch(loadAllPosts(text) as any);
   };
 
   return (

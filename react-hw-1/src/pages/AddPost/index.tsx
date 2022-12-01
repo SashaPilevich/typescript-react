@@ -1,12 +1,12 @@
 import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
-import { AddPostItem } from "../../components/TemplateTitle";
-import style from "./style.module.css";
+import { AddPostItem } from "../../components/AddPostForm";
+
 export const AddPost = () => {
   return (
     <Container>
       <Header />
-      <AddPostItem />
+      <AddPostItem isEdit={false} />
     </Container>
   );
 };

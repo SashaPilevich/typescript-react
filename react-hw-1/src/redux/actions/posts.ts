@@ -21,27 +21,15 @@ export const setAllPosts = (posts: IPost[]) => {
 
 export const loadAllPosts = (searchText: string) => {
   return (dispatch: Dispatch, getState: () => TState) => {
-    const { PostsReducer } = getState();
-    const posts = PostsReducer.allPosts;
     dispatch(setIsLoading(true));
-
-    fetchPosts(searchText, posts.length)
+    fetchPosts(searchText)
       .then((values) => {
         if (values.count > values.results.length) {
           dispatch(setShowLoadMore(true));
         } else {
           dispatch(setShowLoadMore(false));
         }
-        if (posts.length !== 0) {
-          dispatch(setAllPosts(posts.concat(values.results)));
-        } else {
-          dispatch(setAllPosts(values.results));
-        }
-        if (!searchText) {
-          dispatch(setAllPosts(posts.concat(values.results)));
-        } else {
-          dispatch(setAllPosts(values.results));
-        }
+        dispatch(setAllPosts(values.results));
       })
       .finally(() => {
         dispatch(setIsLoading(false));

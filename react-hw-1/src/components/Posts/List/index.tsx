@@ -8,6 +8,7 @@ import style from "./style.module.css";
 interface IProps {
   posts: IPost[];
   onClickDelete?: (id: number) => void;
+  onClickEdit?: (id: number) => void;
 }
 
 export const PostList = (props: IProps) => {
@@ -31,6 +32,12 @@ export const PostList = (props: IProps) => {
                 props.onClickDelete(item.id);
               }
             };
+            const clickEdit: MouseEventHandler<HTMLButtonElement> = (event) => {
+              event.stopPropagation();
+              if (props.onClickEdit) {
+                props.onClickEdit(item.id);
+              }
+            };
             return (
               <div key={item.id} onClick={clickPost}>
                 <ItemOfPost
@@ -45,13 +52,22 @@ export const PostList = (props: IProps) => {
                   marked={item.marked}
                   liked={item.liked}
                 />
-                {props.onClickDelete ? (
-                  <Button
-                    label="Remove Post"
-                    onClick={clickDelete}
-                    type="remove"
-                  />
-                ) : null}
+                <div className={style.btnContainer}>
+                  {props.onClickDelete ? (
+                    <Button
+                      label="Remove Post"
+                      onClick={clickDelete}
+                      type="remove"
+                    />
+                  ) : null}
+                  {props.onClickEdit ? (
+                    <Button
+                      label="Edit Post"
+                      onClick={clickEdit}
+                      type="remove"
+                    />
+                  ) : null}
+                </div>
               </div>
             );
           })

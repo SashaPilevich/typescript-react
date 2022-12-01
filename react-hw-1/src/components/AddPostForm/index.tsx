@@ -1,21 +1,36 @@
 import { ChangeEventHandler, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../../api/posts";
+import { createPost, editPost } from "../../api/posts";
 import { Context } from "../../App";
+import { EditPost } from "../../pages/EditPost";
 
 import { Button } from "../Button";
 import { Input } from "../Input";
 import style from "./style.module.css";
-
-export const AddPostItem = () => {
+interface IProps {
+  isEdit: boolean;
+  defaultTitle?: string;
+  defaultNumber?: number;
+  defaultText?: string;
+  defaultImage?: string;
+  postId?: number;
+}
+export const AddPostItem = ({
+  isEdit,
+  defaultTitle,
+  defaultNumber,
+  defaultText,
+  defaultImage,
+  postId,
+}: IProps) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
-  const [title, setTitle] = useState("");
-  const [lessonNum, setLessonNum] = useState("");
-  const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [title, setTitle] = useState(defaultTitle || "");
+  const [lessonNum, setLessonNum] = useState(String(defaultNumber) || "");
+  const [text, setText] = useState(defaultText || "");
+  const [image, setImage] = useState(defaultImage || "");
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { isDark } = useContext(Context);
@@ -32,7 +47,9 @@ export const AddPostItem = () => {
     formData.append("title", title);
     formData.append("lesson_num", lessonNum);
     formData.append("text", text);
-    createPost(formData)
+    const promise =
+      isEdit && postId ? editPost(formData, postId) : createPost(formData);
+    promise
       .then((response) => {
         if (response.ok) {
           navigate("/myposts");
@@ -62,7 +79,11 @@ export const AddPostItem = () => {
         <button className={style.btnBack} onClick={goBack}>
           Back
         </button>
-        <h2 className={style.title}>Add new post</h2>
+        {isEdit ? (
+          <h2 className={style.title}>Edit post</h2>
+        ) : (
+          <h2 className={style.title}>Add new post</h2>
+        )}
       </div>
       <div className={style.infoContainer}>
         <div className={style.inputContainer}>
@@ -125,7 +146,7 @@ export const AddPostItem = () => {
         </div>
       </div>
       <Button
-        label={"Add"}
+        label={isEdit ? "Edit" : "Add"}
         onClick={createNewPost}
         type="buttonForRegistration"
       />
